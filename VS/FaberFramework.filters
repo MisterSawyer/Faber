@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="app">
+      <UniqueIdentifier>{dc233f2f-2a9b-4eb7-bb69-1be2ea84023f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework">
+      <UniqueIdentifier>{573c3990-97a6-4801-a927-615961eae003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\timer">
+      <UniqueIdentifier>{23fd83d0-c78c-443f-8377-a446aa810d38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\logger">
+      <UniqueIdentifier>{ff79af3e-2f4d-47d1-912f-41b50fc263ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\window">
+      <UniqueIdentifier>{81dd4ec0-624a-4d08-98ed-0e37ff6afedf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\renderer">
+      <UniqueIdentifier>{854bc3a6-7fba-4c35-9b99-cf6f75316ade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\input">
+      <UniqueIdentifier>{7d8b4d71-ea94-454e-ab8a-cfd6990a07c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{ba98273a-a4a5-4ad7-813a-d49bb434ca84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\actor">
+      <UniqueIdentifier>{cacb3468-13ea-43c9-9313-436d6ba976ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\transformable">
+      <UniqueIdentifier>{d3581c15-1d90-49ee-939b-a9b4ef4d23dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\engine-object">
+      <UniqueIdentifier>{1cdca226-81ca-450f-8ede-350ebc32319b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\framework-listener">
+      <UniqueIdentifier>{e1359ad1-7674-4cb1-a6d2-98392d391b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\macros">
+      <UniqueIdentifier>{dac3ad90-a790-4868-a1bf-d9342d845f49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\sources\main.cpp" />
+    <ClCompile Include="..\sources\framework\framework.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\logger\logger.cpp">
+      <Filter>framework\logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\timer\timer.cpp">
+      <Filter>framework\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\window\window.cpp">
+      <Filter>framework\window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\engine\transformable\transformable.cpp">
+      <Filter>engine\transformable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\engine\actor\actor.cpp">
+      <Filter>engine\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\framework-listener\framework-listener.cpp">
+      <Filter>framework\framework-listener</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sources\app\app.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\framework.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\timer\timer.h">
+      <Filter>framework\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\logger\logger.h">
+      <Filter>framework\logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\window\window.h">
+      <Filter>framework\window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\renderer\renderer.h">
+      <Filter>framework\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\renderer\render-frame.h">
+      <Filter>framework\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\app\app-init-context.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\window\resolution.h">
+      <Filter>framework\window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\input\input.h">
+      <Filter>framework\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\engine\engine.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\engine\actor\actor.h">
+      <Filter>engine\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\engine\engine-object\engine-object.h">
+      <Filter>engine\engine-object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\engine\transformable\transformable.h">
+      <Filter>engine\transformable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\framework-listener\framework-listener.h">
+      <Filter>framework\framework-listener</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\macros\concat.h">
+      <Filter>framework\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\macros\count_params.h">
+      <Filter>framework\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\macros\expand.h">
+      <Filter>framework\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\macros\streamize.h">
+      <Filter>framework\macros</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
