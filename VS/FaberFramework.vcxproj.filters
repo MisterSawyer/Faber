@@ -240,11 +240,11 @@
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-renderer-context\windows\opengl-renderer-context-windows.h">
       <Filter>framework\renderer\opengl\opengl-renderer-context\windows</Filter>
     </ClInclude>
-    <ClInclude Include="..\sources\framework\renderer\renderer-factory.h">
-      <Filter>framework\renderer</Filter>
-    </ClInclude>
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-frame\opengl-frame.h">
       <Filter>framework\renderer\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\renderer\renderer-creator.h">
+      <Filter>framework\renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

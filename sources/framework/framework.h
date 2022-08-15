@@ -21,7 +21,7 @@ namespace fbr
 	class Framework
 	{
 	public:
-		Framework(const std::unique_ptr<ISystemObjectsFactory> & systemFactory);
+		Framework(ISystemObjectsFactory * systemFactory);
 		~Framework();
 
 		void RegisterApp(std::unique_ptr<IApp> app);

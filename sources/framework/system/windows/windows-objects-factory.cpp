@@ -4,6 +4,7 @@
 #include "windows-objects-factory.h"
 
 fbr::windows::WindowsSystemObjectsFactory::WindowsSystemObjectsFactory(HINSTANCE executableInstance)
+	:m_systemRendererContextFactory(executableInstance)
 {
 	m_executableInstance = executableInstance;
 }
@@ -33,7 +34,14 @@ std::unique_ptr<fbr::IRenderer> fbr::windows::WindowsSystemObjectsFactory::MakeR
 
 	//sk¹d wzi¹æ ten typ ??? fbr::opengl::OpenGLRenderer
 
-	return CreateRenderer<fbr::opengl::OpenGLRenderer>(m_executableInstance, windowWin);
+	//return CreateRenderer<fbr::opengl::OpenGLRenderer>(m_executableInstance, windowWin);
+
+	return nullptr;
+}
+
+fbr::windows::WindowsSystemRendererContextFactory & fbr::windows::WindowsSystemObjectsFactory::GetRendererContextCreator()
+{
+	return m_systemRendererContextFactory;
 }
 
 bool fbr::windows::WindowsSystemObjectsFactory::CreateConsole() const

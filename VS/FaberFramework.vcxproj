@@ -68,7 +68,7 @@
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-surface-bitfields.h" />
     <ClInclude Include="..\sources\framework\renderer\render-frame.h" />
     <ClInclude Include="..\sources\framework\renderer\renderer-context\renderer-context.h" />
-    <ClInclude Include="..\sources\framework\renderer\renderer-factory.h" />
+    <ClInclude Include="..\sources\framework\renderer\renderer-creator.h" />
     <ClInclude Include="..\sources\framework\renderer\renderer.h" />
     <ClInclude Include="..\sources\framework\renderer\shader\shader-stage.h" />
     <ClInclude Include="..\sources\framework\renderer\shader\shader.h" />

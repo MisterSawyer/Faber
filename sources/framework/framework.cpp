@@ -10,7 +10,7 @@
 
 namespace fbr
 {
-	Framework::Framework(const std::unique_ptr<ISystemObjectsFactory> & systemFactory)
+	Framework::Framework(ISystemObjectsFactory * systemFactory)
 		: m_done(false),
 		m_currentApp(-1),
 		m_lastAppTickTime(0),
@@ -21,7 +21,7 @@ namespace fbr
 		m_lastAppTickTime = 0;
 		m_lastAppRenderTime = 0;
 
-		m_systemFactory = systemFactory.get();
+		m_systemFactory = systemFactory;
 
 		LOG_INF("Framework created");
 	}

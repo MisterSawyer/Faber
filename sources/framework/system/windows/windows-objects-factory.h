@@ -13,15 +13,54 @@
 
 namespace fbr::windows
 {
+	template<class T>
+	concept IsRendererFactory = std::is_base_of<fbr::RendererFactory, T>::value;
 
 	template<class T>
-	concept IsRenderer = std::is_base_of<fbr::IRenderer, T>::value;
-
-	template<class T>
-	concept IsOpenGLRenderer = IsRenderer<T> && std::is_base_of<fbr::opengl::OpenGLRenderer, T>::value;
+	concept IsOpenGLRendererFactory = IsRendererFactory<T> && std::is_base_of<fbr::opengl::OpenGLRendererFactory, T>::value;
 
 	//template<class T>
 	//concept IsDXRenderer = std::is_base_of<dx::DXRenderer, T>::value;
+
+
+	struct WindowsSystemRendererContextFactory
+	{
+
+		WindowsSystemRendererContextFactory(const HINSTANCE instance)
+			: m_instance(instance) {}
+
+		WindowsSystemRendererContextFactory(const HINSTANCE instance, fbr::windows::WindowWin* window)
+			: m_instance(instance), m_window(window) {}
+
+
+		void SetWindow(fbr::windows::WindowWin* window)
+		{
+			m_window = window;
+		}
+
+		// custom default renderer - custom context
+		template<class T>
+		requires IsRendererFactory<T>
+			std::unique_ptr<fbr::IRendererContext> CreateContext() const
+		{
+			return nullptr;
+		}
+
+		//opengl
+		template<class T>
+		requires IsOpenGLRendererFactory<T>
+			std::unique_ptr<fbr::IRendererContext> CreateContext() const
+		{
+			return std::make_unique<opengl::windows::ContextOpenGLWindows>(m_instance, m_window->GetHandle());
+		}
+
+		//TODO DX
+
+	private:
+		HINSTANCE m_instance;
+		fbr::windows::WindowWin* m_window;
+	};
+
 
 	
 	class WindowsSystemObjectsFactory : public fbr::ISystemObjectsFactory
@@ -35,26 +74,16 @@ namespace fbr::windows
 
 		std::unique_ptr<IRenderer> MakeRenderer(fbr::Window* window)const override;
 
+		fbr::windows::WindowsSystemRendererContextFactory& GetRendererContextCreator();
+
 		bool CreateConsole()const override;
 		void DestroyConsole()const override;
 	private:
+		fbr::windows::WindowsSystemRendererContextFactory m_systemRendererContextFactory;
 
 		HINSTANCE m_executableInstance;
 	};
 
 
-	//custom renderer
-	template<IsRenderer T>
-	std::unique_ptr<IRenderer> CreateRenderer(const HINSTANCE instance, fbr::windows::WindowWin * window)
-	{
-		return std::make_unique<T>(instance, window->GetHandle());
-	}
 
-	//opengl renderer
-	template<IsOpenGLRenderer T>
-	std::unique_ptr<IRenderer> CreateRenderer(const HINSTANCE instance, fbr::windows::WindowWin * window)
-	{
-		auto context = std::make_unique<opengl::windows::ContextOpenGLWindows>(instance, window->GetHandle());
-		return std::make_unique<opengl::OpenGLRenderer>(context);
-	}
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 
+#include "renderer-context/renderer-context.h"
 #include "render-frame.h"
 #include "color/color.h"
 
@@ -19,5 +20,10 @@ namespace fbr
 
 		void Clear();
 	private:
+	};
+
+	struct RendererFactory
+	{
+		virtual std::unique_ptr<fbr::IRenderer> Create(std::unique_ptr<fbr::IRendererContext> context) = 0;
 	};
 }
