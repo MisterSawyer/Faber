@@ -54,6 +54,7 @@ struct AppMock : public fbr::IApp
 };
 
 int main() {
+
 	std::unique_ptr<fbr::Framework> framework = std::make_unique<fbr::Framework>();
 
 	framework->RegisterApp(std::make_unique<AppMock>());

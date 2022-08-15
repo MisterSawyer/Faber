@@ -24,6 +24,11 @@
     <ClCompile Include="..\sources\framework\framework-listener\framework-listener.cpp" />
     <ClCompile Include="..\sources\framework\framework.cpp" />
     <ClCompile Include="..\sources\framework\logger\logger.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\opengl\shader\opengl-shader-stage.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\opengl\shader\opengl-shader.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\shader\shader-stage.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\shader\shader.cpp" />
     <ClCompile Include="..\sources\framework\timer\timer.cpp" />
     <ClCompile Include="..\sources\framework\window\window.cpp" />
     <ClCompile Include="..\sources\framework\window\windows\window-win.cpp" />
@@ -44,8 +49,13 @@
     <ClInclude Include="..\sources\framework\macros\count_params.h" />
     <ClInclude Include="..\sources\framework\macros\expand.h" />
     <ClInclude Include="..\sources\framework\macros\streamize.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\opengl-renderer.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\shader\opengl-shader-stage.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\shader\opengl-shader.h" />
     <ClInclude Include="..\sources\framework\renderer\render-frame.h" />
     <ClInclude Include="..\sources\framework\renderer\renderer.h" />
+    <ClInclude Include="..\sources\framework\renderer\shader\shader-stage.h" />
+    <ClInclude Include="..\sources\framework\renderer\shader\shader.h" />
     <ClInclude Include="..\sources\framework\timer\timer.h" />
     <ClInclude Include="..\sources\framework\window\resolution.h" />
     <ClInclude Include="..\sources\framework\window\window.h" />
@@ -111,11 +121,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\libs\glm;..\libs\boost_1_79_0;$(IncludePath)</IncludePath>
+    <IncludePath>..\libs\glm;..\libs\boost_1_79_0;..\libs\glew-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Sawyer\source\repos\FaberFramework\libs\glew-2.1.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\libs\glm;..\libs\boost_1_79_0;$(IncludePath)</IncludePath>
+    <IncludePath>..\libs\glm;..\libs\boost_1_79_0;..\libs\glew-2.1.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Sawyer\source\repos\FaberFramework\libs\glew-2.1.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -156,8 +168,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -175,8 +187,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
