@@ -27,12 +27,17 @@
     <ClCompile Include="..\sources\framework\framework.cpp" />
     <ClCompile Include="..\sources\framework\input\input.cpp" />
     <ClCompile Include="..\sources\framework\logger\logger.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer-context\opengl-renderer-context.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer-context\windows\opengl-renderer-context-windows.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer.cpp" />
-    <ClCompile Include="..\sources\framework\renderer\opengl\shader\opengl-shader-stage.cpp" />
-    <ClCompile Include="..\sources\framework\renderer\opengl\shader\opengl-shader.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\opengl\opengl-shader\opengl-shader-stage.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\opengl\opengl-shader\opengl-shader.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\renderer.cpp" />
     <ClCompile Include="..\sources\framework\renderer\shader\shader-stage.cpp" />
     <ClCompile Include="..\sources\framework\renderer\shader\shader.cpp" />
     <ClCompile Include="..\sources\framework\macros\macros.cpp" />
+    <ClCompile Include="..\sources\framework\system\system-factory.cpp" />
+    <ClCompile Include="..\sources\framework\system\windows\windows-objects-factory.cpp" />
     <ClCompile Include="..\sources\framework\timer\timer.cpp" />
     <ClCompile Include="..\sources\framework\window\window.cpp" />
     <ClCompile Include="..\sources\framework\window\windows\window-win.cpp" />
@@ -53,13 +58,22 @@
     <ClInclude Include="..\sources\framework\macros\count-params.h" />
     <ClInclude Include="..\sources\framework\macros\expand.h" />
     <ClInclude Include="..\sources\framework\macros\streamize.h" />
+    <ClInclude Include="..\sources\framework\renderer\color\color.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\opengl-frame\opengl-frame.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\opengl-renderer-context\opengl-renderer-context.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\opengl-renderer-context\windows\opengl-renderer-context-windows.h" />
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-renderer.h" />
-    <ClInclude Include="..\sources\framework\renderer\opengl\shader\opengl-shader-stage.h" />
-    <ClInclude Include="..\sources\framework\renderer\opengl\shader\opengl-shader.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\opengl-shader\opengl-shader-stage.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\opengl-shader\opengl-shader.h" />
+    <ClInclude Include="..\sources\framework\renderer\opengl\opengl-surface-bitfields.h" />
     <ClInclude Include="..\sources\framework\renderer\render-frame.h" />
+    <ClInclude Include="..\sources\framework\renderer\renderer-context\renderer-context.h" />
+    <ClInclude Include="..\sources\framework\renderer\renderer-factory.h" />
     <ClInclude Include="..\sources\framework\renderer\renderer.h" />
     <ClInclude Include="..\sources\framework\renderer\shader\shader-stage.h" />
     <ClInclude Include="..\sources\framework\renderer\shader\shader.h" />
+    <ClInclude Include="..\sources\framework\system\system-factory.h" />
+    <ClInclude Include="..\sources\framework\system\windows\windows-objects-factory.h" />
     <ClInclude Include="..\sources\framework\timer\timer.h" />
     <ClInclude Include="..\sources\framework\window\resolution.h" />
     <ClInclude Include="..\sources\framework\window\window.h" />
@@ -170,7 +184,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -187,7 +201,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>

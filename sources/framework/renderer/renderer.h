@@ -1,21 +1,23 @@
 #pragma once
-#include "render-frame.h"
-#include "../window/window.h"
 #include <memory>
+
+#include "render-frame.h"
+#include "color/color.h"
 
 namespace fbr
 {
 	class IRenderer
 	{
 	public:
+		IRenderer() = default;
+
 		virtual ~IRenderer() = default;
 
-		virtual bool Init(Window * window) = 0;
+		virtual bool Init() = 0;
 		virtual void Render() = 0;
-		
-		inline void Clear() { m_frame->Reset(); }
-		inline IRenderFrame* GetFrame() { return m_frame.get(); }
-	protected:
-		std::unique_ptr<IRenderFrame> m_frame;
+		virtual IRenderFrame * GetFrame() = 0;
+
+		void Clear();
+	private:
 	};
 }

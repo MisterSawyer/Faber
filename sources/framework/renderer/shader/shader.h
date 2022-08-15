@@ -10,14 +10,14 @@
 namespace fbr
 {
 	template <class T>
-	concept ShaderStageDerivedConcept = std::is_base_of<ShaderStage, T>::value;
+	concept ShaderStageDerivedConcept = std::is_base_of<IShaderStage, T>::value;
 
 	template <ShaderStageDerivedConcept T>
-	class ShaderProgram
+	class IShaderProgram
 	{
 	public:
-		ShaderProgram();
-		virtual ~ShaderProgram();
+		IShaderProgram();
+		virtual ~IShaderProgram();
 
 		virtual bool Compile() = 0;
 		virtual bool Use() = 0;
@@ -44,62 +44,62 @@ namespace fbr
 	};
 
 	template <ShaderStageDerivedConcept T>
-	ShaderProgram<T>::ShaderProgram()
+	IShaderProgram<T>::IShaderProgram()
 	{
 		m_initialized = false;
 	}
 
 	template <ShaderStageDerivedConcept T>
-	ShaderProgram<T>::~ShaderProgram()
+	IShaderProgram<T>::~IShaderProgram()
 	{
 		Destroy();
 	}
 
 	template <ShaderStageDerivedConcept T>
-	bool ShaderProgram<T>::Initialized() const
+	bool IShaderProgram<T>::Initialized() const
 	{
 		return m_initialized;
 	}
 
 	template <ShaderStageDerivedConcept T>
-	void ShaderProgram<T>::SetAsInitialized()
+	void IShaderProgram<T>::SetAsInitialized()
 	{
 		m_initialized = true;
 	}
 
 	template<ShaderStageDerivedConcept T>
-	inline const std::vector<std::shared_ptr<T>>& ShaderProgram<T>::GetPipeline() const
+	inline const std::vector<std::shared_ptr<T>>& IShaderProgram<T>::GetPipeline() const
 	{
 		return m_pipeline;
 	}
 
 	template <ShaderStageDerivedConcept T>
-	void ShaderProgram<T>::InsertStage(const std::size_t& order, std::shared_ptr<T> && stage)
+	void IShaderProgram<T>::InsertStage(const std::size_t& order, std::shared_ptr<T> && stage)
 	{
 		m_pipeline.insert(m_pipeline.begin() + order, std::move(stage));
 	}
 
 	template <ShaderStageDerivedConcept T>
-	void ShaderProgram<T>::InsertStage(const std::size_t& order, const std::shared_ptr<T> & stage)
+	void IShaderProgram<T>::InsertStage(const std::size_t& order, const std::shared_ptr<T> & stage)
 	{
 		m_pipeline.insert(m_pipeline.begin() + order, stage);
 
 	}
 
 	template <ShaderStageDerivedConcept T>
-	void ShaderProgram<T>::AddStage(const std::shared_ptr<T> & stage)
+	void IShaderProgram<T>::AddStage(const std::shared_ptr<T> & stage)
 	{
 		m_pipeline.push_back(stage);
 	}
 
 	template <ShaderStageDerivedConcept T>
-	void ShaderProgram<T>::AddStage(std::shared_ptr<T> && stage)
+	void IShaderProgram<T>::AddStage(std::shared_ptr<T> && stage)
 	{
 		m_pipeline.push_back(std::move(stage));
 	}
 
 	template <ShaderStageDerivedConcept T>
-	bool ShaderProgram<T>::CompilePipeline()
+	bool IShaderProgram<T>::CompilePipeline()
 	{
 		for (auto& stage : m_pipeline)
 		{
@@ -116,7 +116,7 @@ namespace fbr
 	}
 
 	template <ShaderStageDerivedConcept T>
-	bool ShaderProgram<T>::Destroy()
+	bool IShaderProgram<T>::Destroy()
 	{
 		m_initialized = false;
 

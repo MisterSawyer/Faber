@@ -3,9 +3,9 @@
 #include "../../shader/shader.h"
 #include "opengl-shader-stage.h"
 
-namespace fbr
+namespace fbr::opengl
 {
-	class ShaderOpenGL : public ShaderProgram<ShaderStageOpenGL>
+	class ShaderOpenGL : public IShaderProgram<ShaderStageOpenGL>
 	{
 	public:
 		ShaderOpenGL();

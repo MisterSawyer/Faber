@@ -5,9 +5,12 @@
 #include <atomic>
 #include <vector>
 #include <mutex>
+#include <memory>
+
 #include "renderer/renderer.h"
 #include "input/input.h"
 #include "../app/app-init-context.h"
+#include "system/system-factory.h"
 
 namespace fbr
 {
@@ -18,11 +21,10 @@ namespace fbr
 	class Framework
 	{
 	public:
-		Framework();
+		Framework(const std::unique_ptr<ISystemObjectsFactory> & systemFactory);
 		~Framework();
 
 		void RegisterApp(std::unique_ptr<IApp> app);
-		void RegisterRenderer(std::unique_ptr<IRenderer> renderer);
 
 		bool Init();
 		void Loop();
@@ -43,6 +45,8 @@ namespace fbr
 		void ProcessInputEvent(const InputEvent inputEvent);
 
 		void PumpMessages();
+
+		ISystemObjectsFactory * m_systemFactory;
 
 		std::atomic<bool>		m_done;
 

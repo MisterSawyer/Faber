@@ -14,16 +14,16 @@ namespace fbr
 		COMPUTE_SHADER
 	};
 
-	class ShaderStage
+	class IShaderStage
 	{
 	public:
-		virtual ~ShaderStage();
+		virtual ~IShaderStage();
 
-		ShaderStage(ShaderStageType type, const std::string& code);
-		ShaderStage(ShaderStageType type, std::string && code) noexcept;
+		IShaderStage(ShaderStageType type, const std::string& code);
+		IShaderStage(ShaderStageType type, std::string && code) noexcept;
 
-		bool operator == (const ShaderStage & rhs)const;
-		bool operator != (const ShaderStage& rhs)const;
+		bool operator == (const IShaderStage& rhs)const;
+		bool operator != (const IShaderStage& rhs)const;
 
 		bool Initialized() const;
 
@@ -31,10 +31,10 @@ namespace fbr
 		virtual bool Destroy();
 
 	protected:
-		ShaderStage(const ShaderStage& other);
-		ShaderStage(ShaderStage&& other) noexcept;
-		ShaderStage& operator=(const ShaderStage& other);
-		ShaderStage& operator=(ShaderStage&& other) noexcept;
+		IShaderStage(const IShaderStage& other);
+		IShaderStage(IShaderStage&& other) noexcept;
+		IShaderStage& operator=(const IShaderStage& other);
+		IShaderStage& operator=(IShaderStage&& other) noexcept;
 
 		const ShaderStageType& GetType() const;
 		const std::string& GetCode() const;

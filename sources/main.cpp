@@ -1,28 +1,11 @@
 #include "app/app.h"
 
+//ON WINDOWS
+#include "framework/system/windows/windows-objects-factory.h"
+
 //TODO it must be resolved differently
-struct RendererFrameMock : public fbr::IRenderFrame
-{
-	virtual void Reset() override
-	{
 
-	}
-};
 
-struct RendererMock : public fbr::IRenderer
-{
-	bool Init(fbr::Window* window)override
-	{
-		//TODO I Don't like it
-		m_frame = std::make_unique<RendererFrameMock>();
-		return true;
-	}
-
-	void Render()override
-	{
-
-	}
-};
 
 struct AppMock : public fbr::IApp
 {
@@ -53,14 +36,33 @@ struct AppMock : public fbr::IApp
 	}
 };
 
+struct RendererFrameMock : public fbr::IRenderFrame
+{
+	virtual void Reset() override
+	{
+
+	}
+};
+
+class RendererMock : public fbr::IRenderer
+{
+public:
+	void Render()
+	{
+
+	}
+};
+
 int main() {
 
-	std::unique_ptr<fbr::Framework> framework = std::make_unique<fbr::Framework>();
+	std::unique_ptr<fbr::ISystemObjectsFactory> systemFactory = std::make_unique<fbr::windows::WindowsSystemObjectsFactory>(nullptr);
+
+	std::unique_ptr<fbr::Framework> framework = std::make_unique<fbr::Framework>(systemFactory);
 
 	framework->RegisterApp(std::make_unique<AppMock>());
 
 	// optional
-	framework->RegisterRenderer(std::make_unique<RendererMock>());
+	//framework->RegisterRenderer(std::make_unique<RendererMock>());
 
 	if (!framework->Init())
 		return -1;
@@ -68,4 +70,29 @@ int main() {
 	framework->Loop();
 
   return 0;
+}
+
+#include "../sources/framework/renderer/opengl/opengl-renderer.h"
+
+int __stdcall WinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE previnstance, _In_ LPSTR cmdline, _In_ int cmdshow)
+{
+	std::unique_ptr<fbr::ISystemObjectsFactory> systemFactory = std::make_unique<fbr::windows::WindowsSystemObjectsFactory>(instance);
+
+
+	systemFactory->CreateConsole();
+
+	std::unique_ptr<fbr::Framework> framework = std::make_unique<fbr::Framework>(systemFactory);
+
+	framework->RegisterApp(std::make_unique<AppMock>());
+
+	
+
+	//framework->RegisterRenderer(std::make_unique<RendererMock>());
+
+	if (!framework->Init())
+		return -1;
+
+	framework->Loop();
+
+	return 0;
 }

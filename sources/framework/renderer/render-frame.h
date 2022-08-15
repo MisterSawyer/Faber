@@ -5,7 +5,7 @@ namespace fbr
 	class IRenderFrame
 	{
 	public:
-		virtual ~IRenderFrame() {};
+		virtual ~IRenderFrame() = default;
 		virtual void Reset() = 0;
 	};
 }

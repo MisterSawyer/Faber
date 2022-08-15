@@ -10,7 +10,7 @@
 
 namespace fbr
 {
-	Framework::Framework()
+	Framework::Framework(const std::unique_ptr<ISystemObjectsFactory> & systemFactory)
 		: m_done(false),
 		m_currentApp(-1),
 		m_lastAppTickTime(0),
@@ -20,6 +20,8 @@ namespace fbr
 		m_currentApp = -1;
 		m_lastAppTickTime = 0;
 		m_lastAppRenderTime = 0;
+
+		m_systemFactory = systemFactory.get();
 
 		LOG_INF("Framework created");
 	}
@@ -36,11 +38,13 @@ namespace fbr
 		LOG_INF("App registered");
 	}
 
+	/*
 	void Framework::RegisterRenderer(std::unique_ptr<IRenderer> renderer)
 	{
 		m_renderer = std::move(renderer);
 		LOG_INF("Renderer registered");
 	}
+	*/
 
 	void Framework::ConnectWindowListener()
 	{
@@ -55,6 +59,12 @@ namespace fbr
 
 	bool Framework::Init()
 	{
+		if (m_systemFactory == nullptr)
+		{
+			LOG_ERR("System factory not specyfied");
+			return false;
+		}
+
 		// no apps
 		if (m_apps.empty()) {
 			LOG_ERR("No apps connected");
@@ -68,14 +78,17 @@ namespace fbr
 
 		// create app window
 		//TODO platform specyfic (abstract factory)
-		m_window = std::make_unique<windows::WindowWin>(resolution);
+		m_window = m_systemFactory->MakeWindow(resolution);
 
 		// install hook for the viewport
 		ConnectWindowListener();
 
+		//Create renderer
+		m_renderer = m_systemFactory->MakeRenderer(m_window.get());
+
 		//Init renderer
 		if (m_renderer) {
-			m_renderer->Init(m_window.get());
+			m_renderer->Init();
 		}
 		else
 		{

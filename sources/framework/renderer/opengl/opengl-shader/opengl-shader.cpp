@@ -1,17 +1,17 @@
 #include "opengl-shader.h"
 #include "../../../logger/logger.h" //TODO to trzeba dodaæ <>
 
-fbr::ShaderOpenGL::ShaderOpenGL()
+fbr::opengl::ShaderOpenGL::ShaderOpenGL()
 {
 	m_programID = 0;
 }
 
-fbr::ShaderOpenGL::~ShaderOpenGL()
+fbr::opengl::ShaderOpenGL::~ShaderOpenGL()
 {
 	Destroy();
 }
 
-bool fbr::ShaderOpenGL::Use()
+bool fbr::opengl::ShaderOpenGL::Use()
 {
 	if (!Initialized()) {
 		LOG_ERR("Shader program is not initialized");
@@ -23,7 +23,7 @@ bool fbr::ShaderOpenGL::Use()
 	return true;
 }
 
-bool fbr::ShaderOpenGL::Destroy()
+bool fbr::opengl::ShaderOpenGL::Destroy()
 {
 	if (m_programID == 0)
 	{
@@ -37,7 +37,7 @@ bool fbr::ShaderOpenGL::Destroy()
 	return true;
 }
 
-bool fbr::ShaderOpenGL::Compile()
+bool fbr::opengl::ShaderOpenGL::Compile()
 {
 	if (!CompilePipeline())
 	{

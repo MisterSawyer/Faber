@@ -1,5 +1,6 @@
 #include "window-win.h"
 #include <windowsx.h>
+
 #include "../../logger/logger.h"
 
 namespace fbr::windows

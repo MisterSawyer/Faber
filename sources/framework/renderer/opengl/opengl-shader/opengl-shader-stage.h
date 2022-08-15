@@ -3,9 +3,9 @@
 
 #include "../../shader/shader-stage.h"
 
-namespace fbr
+namespace fbr::opengl
 {
-	class ShaderStageOpenGL : public ShaderStage
+	class ShaderStageOpenGL : public IShaderStage
 	{
 	public:
 		ShaderStageOpenGL(ShaderStageType type, const std::string& code);
