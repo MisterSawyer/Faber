@@ -97,6 +97,18 @@
     <ClCompile Include="..\sources\framework\renderer\shader\shader-stage.cpp">
       <Filter>framework\renderer\shader</Filter>
     </ClCompile>
+    <ClCompile Include="..\sources\app\app.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\engine\engine-object\engine-object.cpp">
+      <Filter>engine\engine-object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\macros\macros.cpp">
+      <Filter>framework\macros</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\input\input.cpp">
+      <Filter>framework\input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\sources\app\app.h">
@@ -147,7 +159,7 @@
     <ClInclude Include="..\sources\framework\macros\concat.h">
       <Filter>framework\macros</Filter>
     </ClInclude>
-    <ClInclude Include="..\sources\framework\macros\count_params.h">
+    <ClInclude Include="..\sources\framework\macros\count-params.h">
       <Filter>framework\macros</Filter>
     </ClInclude>
     <ClInclude Include="..\sources\framework\macros\expand.h">

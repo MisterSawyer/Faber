@@ -19,16 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\sources\app\app.cpp" />
     <ClCompile Include="..\sources\engine\actor\actor.cpp" />
+    <ClCompile Include="..\sources\engine\engine-object\engine-object.cpp" />
     <ClCompile Include="..\sources\engine\transformable\transformable.cpp" />
     <ClCompile Include="..\sources\framework\framework-listener\framework-listener.cpp" />
     <ClCompile Include="..\sources\framework\framework.cpp" />
+    <ClCompile Include="..\sources\framework\input\input.cpp" />
     <ClCompile Include="..\sources\framework\logger\logger.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\shader\opengl-shader-stage.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\shader\opengl-shader.cpp" />
     <ClCompile Include="..\sources\framework\renderer\shader\shader-stage.cpp" />
     <ClCompile Include="..\sources\framework\renderer\shader\shader.cpp" />
+    <ClCompile Include="..\sources\framework\macros\macros.cpp" />
     <ClCompile Include="..\sources\framework\timer\timer.cpp" />
     <ClCompile Include="..\sources\framework\window\window.cpp" />
     <ClCompile Include="..\sources\framework\window\windows\window-win.cpp" />
@@ -46,7 +50,7 @@
     <ClInclude Include="..\sources\framework\input\input.h" />
     <ClInclude Include="..\sources\framework\logger\logger.h" />
     <ClInclude Include="..\sources\framework\macros\concat.h" />
-    <ClInclude Include="..\sources\framework\macros\count_params.h" />
+    <ClInclude Include="..\sources\framework\macros\count-params.h" />
     <ClInclude Include="..\sources\framework\macros\expand.h" />
     <ClInclude Include="..\sources\framework\macros\streamize.h" />
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-renderer.h" />
