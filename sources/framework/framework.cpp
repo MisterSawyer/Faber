@@ -84,7 +84,7 @@ namespace fbr
 		ConnectWindowListener();
 
 		//Create renderer
-		m_renderer = m_systemFactory->MakeRenderer(m_window.get());
+		m_renderer = m_rendererSystemFactory->m_object->CreateRenderer(m_window.get());
 
 		//Init renderer
 		if (m_renderer) {
@@ -212,6 +212,21 @@ namespace fbr
 	{
 		m_apps[m_currentApp]->OnClose();
 		m_apps.erase(m_apps.begin() + m_currentApp);
+	}
+
+	void Framework::ChooseRenderer(fbr::RendererSystemCreator* creator)
+	{
+		if (m_systemFactory == nullptr)
+		{
+			LOG_WAR("Undefined system ");
+		}
+
+		if (m_window == nullptr)
+		{
+			LOG_WAR("Window is not created ");
+		}
+
+		m_rendererSystemFactory = creator;
 	}
 
 	void Framework::ProcessInputEvent(const InputEvent inputEvent)

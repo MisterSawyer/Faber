@@ -39,7 +39,7 @@ std::unique_ptr<fbr::IRenderer> fbr::windows::WindowsSystemObjectsFactory::MakeR
 	return nullptr;
 }
 
-fbr::windows::WindowsSystemRendererContextFactory & fbr::windows::WindowsSystemObjectsFactory::GetRendererContextCreator()
+fbr::windows::WindowsSystemRendererContextFactory& fbr::windows::WindowsSystemObjectsFactory::GetRendererContextCreator()
 {
 	return m_systemRendererContextFactory;
 }

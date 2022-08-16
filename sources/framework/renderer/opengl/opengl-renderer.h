@@ -11,6 +11,9 @@ namespace fbr::opengl
 {
 	struct OpenGLRendererFactory;
 
+	template<class T>
+	concept IsOpenGLRendererFactory = IsRendererFactory<T> && std::is_base_of<fbr::opengl::OpenGLRendererFactory, T>::value;
+
 	/*
 	* Renderer is a combination of Context and Frame(data to draw) (and additional object like for e.x Shader)
 	* it has knowledge of how to use data from Frame to draw it on screen

@@ -7,10 +7,13 @@
 #include <mutex>
 #include <memory>
 
+#include "logger/logger.h"
+
 #include "renderer/renderer.h"
 #include "input/input.h"
 #include "../app/app-init-context.h"
 #include "system/system-factory.h"
+#include "renderer/renderer-creator.h"
 
 namespace fbr
 {
@@ -34,6 +37,10 @@ namespace fbr
 		void BufferInput(const InputEvent inputEvent);
 
 		void CloseCurrentApp();
+
+		void ChooseRenderer(fbr::RendererSystemCreator* creator);
+
+
 	private:
 		bool InitializeApps(const AppInitContext& appInitContext);
 		bool CheckCurrentAppValidity();
@@ -47,6 +54,7 @@ namespace fbr
 		void PumpMessages();
 
 		ISystemObjectsFactory * m_systemFactory;
+		RendererSystemCreator * m_rendererSystemFactory;
 
 		std::atomic<bool>		m_done;
 
