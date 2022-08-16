@@ -34,6 +34,9 @@ namespace fbr
 		void RequestExit();
 
 		void SetListener(std::unique_ptr<FrameworkAppListener> listener);
+
+		FrameworkAppListener* GetListener();
+
 	private:
 		std::unique_ptr<FrameworkAppListener>	m_listener;
 	};

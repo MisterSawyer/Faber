@@ -82,6 +82,15 @@
     <Filter Include="examples\linux">
       <UniqueIdentifier>{2a99db4f-f9e3-4e6f-af8d-3e6250db438c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="framework\renderer\dx">
+      <UniqueIdentifier>{d91df44c-4b81-427d-897d-31592e2ac8c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\renderer\dx\dx-renderer-context">
+      <UniqueIdentifier>{b22c5219-0dae-4c9a-9b76-960f80f1777b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\renderer\dx\dx-renderer-context\windows">
+      <UniqueIdentifier>{5fd2f85c-4a28-46b4-972c-5d75998ee537}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\sources\main.cpp" />
@@ -149,6 +158,12 @@
       <Filter>framework\system</Filter>
     </ClCompile>
     <ClCompile Include="..\sources\framework\renderer\renderer.cpp">
+      <Filter>framework\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\renderer\color\color.cpp">
+      <Filter>framework\renderer\color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\renderer\render-frame.cpp">
       <Filter>framework\renderer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -266,6 +281,15 @@
     </ClInclude>
     <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\linux\sfml-context-lin.h">
       <Filter>examples\linux</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\renderer\dx\dx-renderer.h">
+      <Filter>framework\renderer\dx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\renderer\dx\dx-context\dx-renderer-context.h">
+      <Filter>framework\renderer\dx\dx-renderer-context</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\renderer\dx\dx-context\windows\dx-rednerer-context-windows.h">
+      <Filter>framework\renderer\dx\dx-renderer-context\windows</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

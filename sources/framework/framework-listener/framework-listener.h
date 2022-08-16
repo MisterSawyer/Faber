@@ -39,6 +39,9 @@ namespace fbr
 		{}
 
 		void RequestClose();
+
+		void SwitchR(fbr::RendererSystemCreator* ptr);
+
 	private:
 		fbr::Framework::AppId_t m_appID;
 	};

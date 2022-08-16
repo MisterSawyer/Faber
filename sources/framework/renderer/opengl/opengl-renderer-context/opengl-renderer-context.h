@@ -12,6 +12,7 @@ namespace fbr::opengl
 		void SetBackgroundColor(const Color<float> & color) override;
 
 		void Clear() override;
+		virtual void SwapBuffer() = 0;
 
 	protected:
 		virtual bool GetAccessToOpenGLExtensions() = 0;

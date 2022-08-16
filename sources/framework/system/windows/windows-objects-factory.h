@@ -5,12 +5,18 @@
 #include <Windows.h>
 
 #include "../system-factory.h"
-#include "../../renderer/opengl/opengl-renderer.h"
 #include "../../window/windows/window-win.h"
 #include "../../renderer/renderer-creator.h"
 
+#include "../../renderer/opengl/opengl-renderer.h"
+#include "../../renderer/dx/dx-renderer.h"
+
+
 //windows specyfic
 #include "../../renderer/opengl/opengl-renderer-context/windows/opengl-renderer-context-windows.h"
+//TODO
+//#include "../../renderer/dx/dx-renderer-context/windows/dx-renderer-context-windows.h"
+#include "../../renderer/dx/dx-context/windows/dx-rednerer-context-windows.h"
 
 //------------- EXAMPLE -------------
 #include "../../../../examples/SFML_RENDERER_EXAMPLE/sfml-renderer.h"
@@ -80,7 +86,14 @@ namespace fbr::windows
 			return std::make_unique<ContextSFMLWin>(m_window->CreateViewBuffer());
 		}
 
-		//TODO DX
+
+		//Creates dx context for windows
+		template<class T>
+		requires dx::IsDX11RendererFactory<T>
+			std::unique_ptr<fbr::IRendererContext> CreateContext() const
+		{
+			return std::make_unique<dx::ContextDirectX11Windows>(m_window);
+		}
 
 	private:
 		HINSTANCE m_instance;

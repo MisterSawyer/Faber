@@ -27,11 +27,13 @@
     <ClCompile Include="..\sources\framework\framework.cpp" />
     <ClCompile Include="..\sources\framework\input\input.cpp" />
     <ClCompile Include="..\sources\framework\logger\logger.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\color\color.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer-context\opengl-renderer-context.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer-context\windows\opengl-renderer-context-windows.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\opengl-shader\opengl-shader-stage.cpp" />
     <ClCompile Include="..\sources\framework\renderer\opengl\opengl-shader\opengl-shader.cpp" />
+    <ClCompile Include="..\sources\framework\renderer\render-frame.cpp" />
     <ClCompile Include="..\sources\framework\renderer\renderer.cpp" />
     <ClCompile Include="..\sources\framework\renderer\shader\shader-stage.cpp" />
     <ClCompile Include="..\sources\framework\renderer\shader\shader.cpp" />
@@ -63,6 +65,9 @@
     <ClInclude Include="..\sources\framework\macros\expand.h" />
     <ClInclude Include="..\sources\framework\macros\streamize.h" />
     <ClInclude Include="..\sources\framework\renderer\color\color.h" />
+    <ClInclude Include="..\sources\framework\renderer\dx\dx-context\dx-renderer-context.h" />
+    <ClInclude Include="..\sources\framework\renderer\dx\dx-context\windows\dx-rednerer-context-windows.h" />
+    <ClInclude Include="..\sources\framework\renderer\dx\dx-renderer.h" />
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-frame\opengl-frame.h" />
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-renderer-context\opengl-renderer-context.h" />
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-renderer-context\windows\opengl-renderer-context-windows.h" />
@@ -188,7 +193,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;glew32.lib;opengl32.lib;d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;..\libs\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -207,7 +212,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;glew32.lib;opengl32.lib;d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;..\libs\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

@@ -52,4 +52,9 @@ namespace fbr
 	{
 		m_framework->CloseCurrentApp();
 	}
+
+	void FrameworkAppListener::SwitchR(fbr::RendererSystemCreator * ptr)
+	{
+		m_framework->ChooseRenderer(ptr);
+	}
 }

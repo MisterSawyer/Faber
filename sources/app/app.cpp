@@ -17,3 +17,8 @@ void fbr::IApp::SetListener(std::unique_ptr<FrameworkAppListener> listener)
 {
 	m_listener = std::move(listener);
 }
+
+fbr::FrameworkAppListener* fbr::IApp::GetListener()
+{
+	return m_listener.get();
+}

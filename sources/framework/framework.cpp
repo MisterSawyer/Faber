@@ -169,6 +169,7 @@ namespace fbr
 				else
 				{
 					CreateRenderer();
+					if(m_renderer)m_renderer->Init(m_window.get());
 				}
 			}
 		}
@@ -240,6 +241,8 @@ namespace fbr
 		{
 			LOG_WAR("Window is not created ");
 		}
+
+		m_renderer.reset();
 
 		m_customRenderer = false;
 		m_rendererSystemFactory = creator;

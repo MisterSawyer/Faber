@@ -12,7 +12,6 @@ namespace fbr::opengl
 	public:
 		void Reset() override
 		{
-
 		}
 	};
 }

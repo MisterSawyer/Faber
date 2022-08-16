@@ -2,10 +2,22 @@
 #include "app/app.h"
 #include "framework/system/windows/windows-objects-factory.h"
 #include <unordered_set>
+#include <math.h>
+#include <glm/gtc/constants.hpp>
+
+
+//TODO
+#include "framework/framework-listener/framework-listener.h"
+
 
 // ---------------------------
 #include "../examples/SFML_RENDERER_EXAMPLE/sfml-renderer.h"
 //------------------------------
+
+
+fbr::RendererSystemCreator* rendererCreatorOGL_ptr;
+fbr::RendererSystemCreator* rendererCreatorDX_ptr;
+
 
 // Aplikacja
 struct AppMock : public fbr::IApp
@@ -20,33 +32,55 @@ struct AppMock : public fbr::IApp
 
 	void OnTick(const float timeDelta)override
 	{
+		angle += timeDelta * glm::pi<float>() * 0.25f;
+
+		if (angle > 2.0f * glm::pi<float>())angle -= 2.0f * glm::pi<float>();
+
+		R = 0.5f * std::sin(angle) + 0.5f;
+		B = 0.5f * std::cos(angle) + 0.5f;
 	}
 
 	void OnInput(const fbr::InputEvent inputEvent) override
 	{
-		//;'if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == VK_ESCAPE)RequestExit();
+		if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == VK_ESCAPE)RequestExit();
+		if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == 'D')
+			GetListener()->SwitchR(rendererCreatorDX_ptr);
+		if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == 'A')GetListener()->SwitchR(rendererCreatorOGL_ptr);
+
 	}
 
 	//optional override (won't be invoked if renderer is not connected)
 	void OnRender(fbr::IRenderFrame* frame) override
 	{
-		//to jest taki hack bo jeszcze nie wymysli³em interface IRenderFrame
-		auto f = dynamic_cast<SFMLFrame* >(frame);
-		if (f == nullptr) return;
 
-		//frame traktujemy jako klatkê animacji
-		f->m_objects.insert(&shape);
+		//frame->SetColor();
+
+		//to jest taki hack bo jeszcze nie wymysli³em interface IRenderFrame
+		auto ogl_f = dynamic_cast<fbr::opengl::OpenGLFrame* >(frame);
+		if (ogl_f != nullptr) {
+			ogl_f->SetColor(fbr::Color<float>(R, 0.6f, B, 1.0f));
+			return;
+		}
+
+
+		auto dx_f = dynamic_cast<fbr::dx::DXFrame*>(frame);
+		if (dx_f != nullptr) {
+			dx_f->SetColor(fbr::Color<float>(1.0f-R, 0.6f, B, 1.0f));
+		}
 	}
 
 	void OnClose() override
 	{
 	}
 private:
+	float R, B;
+	float angle = 0;
 	sf::CircleShape shape;
 };
 
 
-//-------------------------- Taki profesjonalny renderer jest w examples/SFML_RENDERER_EXAMPLE
+//-------------------------- 
+// Taki profesjonalny renderer jest w examples/SFML_RENDERER_EXAMPLE
 // Mozna jednak zrobic taki renderer na "szybko" bez dynamicznego wykrywania systemu
 
 class SFMLRendererFAST : public fbr::IRenderer
@@ -85,33 +119,41 @@ private:
 	std::unique_ptr<sf::RenderWindow> m_window;
 };
 
-
 int __stdcall WinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE previnstance, _In_ LPSTR cmdline, _In_ int cmdshow)
 {
-	fbr::windows::WindowsSystemObjectsFactory systemFactory(instance);
-	systemFactory.CreateConsole();
-
-	// Used when choosing predefined renderers with dynamic system detection
-	// with custom context depending on the operating sytstem
-	// 
-	fbr::RendererSystemCreator rendererCreator(systemFactory.GetRendererContextCreator(), SFMLRendererFactory());
-
-	fbr::Framework framework(&systemFactory);
-	fbr::Framework::AppId_t appid0 = framework.RegisterApp(std::make_unique<AppMock>());
-
-	const bool RENDERER_FAST = false;
-
-	if(RENDERER_FAST)framework.RegisterRenderer(std::make_unique<SFMLRendererFAST>());
-	else 
 	{
+		fbr::windows::WindowsSystemObjectsFactory systemFactory(instance);
+		//systemFactory.CreateConsole();
 
-		framework.ChooseRenderer(&rendererCreator);
+		// Used when choosing predefined renderers with dynamic system detection
+		// with custom context depending on the operating sytstem
+		// 
+		fbr::RendererSystemCreator rendererCreatorOGL(systemFactory.GetRendererContextCreator(), fbr::opengl::OpenGLRendererFactory());
+		fbr::RendererSystemCreator rendererCreatorDX(systemFactory.GetRendererContextCreator(), fbr::dx::DX11RendererFactory());
+
+		rendererCreatorOGL_ptr = &rendererCreatorOGL;
+		rendererCreatorDX_ptr = &rendererCreatorDX;
+
+		fbr::Framework framework(&systemFactory);
+
+		framework.ChooseRenderer(&rendererCreatorOGL);
+
+		//framework.RegisterRenderer(std::make_unique<SFMLRendererFAST>());
+
+		framework.RegisterApp(std::make_unique<AppMock>());
+
+		if (!framework.Init())
+			return -1;
+
+		framework.Loop();
+
+		systemFactory.DestroyConsole();
 	}
 
-	if (!framework.Init())
-		return -1;
+	while (true)
+	{
 
-	framework.Loop();
+	}
 
 	return 0;
 }

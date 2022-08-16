@@ -23,5 +23,9 @@ bool fbr::opengl::OpenGLRenderer::Init(fbr::Window* window)
 
 void fbr::opengl::OpenGLRenderer::Render()
 {
-	//TODO
+	m_context->Clear();
+
+	m_context->SetBackgroundColor(m_frame->GetColor());
+
+	m_context->SwapBuffer();
 }

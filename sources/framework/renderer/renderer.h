@@ -26,4 +26,8 @@ namespace fbr
 	{
 		virtual std::unique_ptr<fbr::IRenderer> Create(std::unique_ptr<fbr::IRendererContext> context) = 0;
 	};
+
+
+	template <class T>
+	concept IsRendererFactory = std::derived_from<T, RendererFactory>;
 }

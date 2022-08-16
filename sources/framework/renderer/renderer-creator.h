@@ -7,8 +7,7 @@
 namespace fbr
 {
 
-	template <class T>
-	concept IsRendererFactory = std::derived_from<T, RendererFactory>;
+
 
 	/*
 	* Creates renderer per operating system

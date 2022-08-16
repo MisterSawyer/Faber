@@ -46,8 +46,7 @@ void fbr::opengl::ContextOpenGL::ClearBuffers(fbr::opengl::SurfaceMask masks)
 
 void fbr::opengl::ContextOpenGL::SetBackgroundColor(const Color<float>& color)
 {
-	auto normalizedColor = fbr::normalize(color);
-	glClearColor(normalizedColor.R(), normalizedColor.G(), normalizedColor.B(), normalizedColor.Alpha());
+	glClearColor(color.R(), color.G(), color.B(), color.Alpha());
 }
 
 void fbr::opengl::ContextOpenGL::SetDepthClearValue(double depth)
