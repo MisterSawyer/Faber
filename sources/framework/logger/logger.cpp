@@ -29,17 +29,41 @@ namespace fbr {
 		std::string log_dir_path = relative_path + PROJECT_NAME + DIRECTORY_SEPARATOR + "logs";
 		std::string log_path = log_dir_path + DIRECTORY_SEPARATOR + LOG_FILE_PATH + "_" + date + "." + LOG_FILE_EXTENSION;
 
-		if (std::filesystem::exists(log_dir_path)) {
-			printLog(std::stringstream("Found logs directory in " + log_dir_path + "\n"), INF_COLOR);
+		bool success = true;
+		bool operationResult = false;
+
+		try
+		{
+			operationResult = std::filesystem::exists(log_dir_path);
 		}
-		else {
+		catch (...)
+		{
+			success = false;
+			printLog(std::stringstream("Undefined std::filesystem::exists error when searching for log directory"), ERR_COLOR);
+		}
+
+		//logs directory exists
+		if (operationResult && success)
+			printLog(std::stringstream("Found logs directory in " + log_dir_path + "\n"), INF_COLOR);
+
+		//logs directory doesn't exist
+		if (!operationResult && success)
+		{
 			printLog(std::stringstream("Creating logs directory in " + log_dir_path + "\n"), INF_COLOR);
-			if (std::filesystem::create_directory(log_dir_path)) {
-				printLog(std::stringstream("Creating logs directory succeeded\n"), INF_COLOR);
+			
+			success = true;
+			try 
+			{
+				operationResult = std::filesystem::create_directory(log_dir_path);
 			}
-			else {
-				printLog(std::stringstream("Creating logs directory failed\n"), ERR_COLOR);
+			catch (...)
+			{
+				success = false;
+				printLog(std::stringstream("Undefined std::filesystem::create_directory error when creating logs directory\n"), ERR_COLOR);
 			}
+
+			if (operationResult && success)printLog(std::stringstream("Creating logs directory succeeded\n"), INF_COLOR);
+			if (!operationResult && success)printLog(std::stringstream("Creating logs directory failed\n"), ERR_COLOR);
 		}
 
 		file.open(log_path, std::fstream::out | std::fstream::app);
