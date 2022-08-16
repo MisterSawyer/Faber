@@ -1,21 +1,24 @@
 #pragma once
 #include <cstddef>
+#include "../framework.h"
 
 namespace fbr
 {
-	class Framework;
-
 	class IFrameworkListener
 	{
 	public:
-		virtual ~IFrameworkListener() {};
+		IFrameworkListener(fbr::Framework* framework) : m_framework(framework) {}
+
+		virtual ~IFrameworkListener() = default;
+		void ForwardInput(InputEvent inputEvent) const;
+	protected:
+		fbr::Framework* m_framework;
 	};
 
 	class FrameworkWindowListener : public IFrameworkListener
 	{
 	public:
-		FrameworkWindowListener(Framework* framework)
-			: m_framework(framework)
+		FrameworkWindowListener(fbr::Framework* framework) : IFrameworkListener(framework)
 		{}
 
 		void OnClose();
@@ -25,20 +28,18 @@ namespace fbr
 		void OnMouseButtonClicked(const int buttonCode);
 
 	private:
-		Framework* m_framework;
 	};
 
 	class FrameworkAppListener : public IFrameworkListener
 	{
 	public:
-		FrameworkAppListener(Framework* framework, const std::size_t & appID)
-			: m_framework(framework),
+		FrameworkAppListener(fbr::Framework* framework, const fbr::Framework::AppId_t & appID)
+			: IFrameworkListener(framework),
 			m_appID(appID)
 		{}
 
 		void RequestClose();
 	private:
-		std::size_t m_appID;
-		Framework* m_framework;
+		fbr::Framework::AppId_t m_appID;
 	};
 }

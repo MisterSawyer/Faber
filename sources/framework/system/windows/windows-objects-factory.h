@@ -1,6 +1,7 @@
 #pragma once
 
 #include <concepts>
+#define NOMINMAX
 #include <Windows.h>
 
 #include "../system-factory.h"
@@ -10,6 +11,12 @@
 
 //windows specyfic
 #include "../../renderer/opengl/opengl-renderer-context/windows/opengl-renderer-context-windows.h"
+
+//------------- EXAMPLE -------------
+#include "../../../../examples/SFML_RENDERER_EXAMPLE/sfml-renderer.h"
+//windows specyfic
+#include "../../../../examples/SFML_RENDERER_EXAMPLE/windows/sfml-context-win.h"
+//-----------------------------------
 
 
 namespace fbr::windows
@@ -59,6 +66,18 @@ namespace fbr::windows
 			std::unique_ptr<fbr::IRendererContext> CreateContext() const
 		{
 			return std::make_unique<opengl::windows::ContextOpenGLWindows>(m_instance, m_window->GetHandle());
+		}
+
+
+		//Creates SFML context for windows
+		template<class T>
+		requires IsSFMLRendererFactory<T>
+			std::unique_ptr<fbr::IRendererContext> CreateContext() const
+		{
+			// o dziwo SFML jak uzywa kontrolki to nie chce HWND do tej kontrolki tylko HWND do popup window
+			// cholera wie czemu
+			//https://www.sfml-dev.org/tutorials/1.6/graphics-win32.php
+			return std::make_unique<ContextSFMLWin>(m_window->CreateViewBuffer());
 		}
 
 		//TODO DX

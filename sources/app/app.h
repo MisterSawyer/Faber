@@ -1,16 +1,19 @@
 #pragma once
+#include <memory>
+
 #include "app-init-context.h"
-#include "../framework/framework.h"
-#include "../framework/framework-listener/framework-listener.h"
+#include "../framework/input/input.h"
 
 namespace fbr
 {
+	class FrameworkAppListener;
 	class IRenderFrame;
 
 	class IApp
 	{
 	public:
-		virtual ~IApp() = default;
+		IApp();
+		virtual ~IApp();
 		
 		/// called when application is initialized
 		virtual bool OnInit(AppInitContext appInitContext) = 0;
@@ -27,8 +30,11 @@ namespace fbr
 		//Called when app is closed
 		virtual void OnClose() = 0;
 
-		inline void SetListener(std::unique_ptr<FrameworkAppListener> listener) { m_listener = std::move(listener); }
-	protected:
+		//Call to request exit 
+		void RequestExit();
+
+		void SetListener(std::unique_ptr<FrameworkAppListener> listener);
+	private:
 		std::unique_ptr<FrameworkAppListener>	m_listener;
 	};
 }

@@ -73,6 +73,15 @@
     <Filter Include="framework\renderer\opengl\opengl-renderer-context\windows">
       <UniqueIdentifier>{3f31eec8-1eda-4605-8513-72ea79eba9ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="examples">
+      <UniqueIdentifier>{7d868428-c226-4e16-9d08-828646aae6f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\windows">
+      <UniqueIdentifier>{3afe1f9b-57c7-4215-8d35-f71e3341c13a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\linux">
+      <UniqueIdentifier>{2a99db4f-f9e3-4e6f-af8d-3e6250db438c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\sources\main.cpp" />
@@ -245,6 +254,18 @@
     </ClInclude>
     <ClInclude Include="..\sources\framework\renderer\renderer-creator.h">
       <Filter>framework\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\sfml-context.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\sfml-renderer.h">
+      <Filter>examples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\windows\sfml-context-win.h">
+      <Filter>examples\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\linux\sfml-context-lin.h">
+      <Filter>examples\linux</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

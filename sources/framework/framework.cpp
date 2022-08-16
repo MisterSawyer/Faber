@@ -2,27 +2,19 @@
 #include "logger/logger.h"
 #include "timer/timer.h"
 
-//TODO WINDOWS ABSTRACT FACTORY!!!
-#include "window/windows/window-win.h"
+#include "framework-listener/framework-listener.h"
 #include "renderer/renderer.h"
-
 #include "../app/app.h"
 
 namespace fbr
 {
 	Framework::Framework(ISystemObjectsFactory * systemFactory)
 		: m_done(false),
-		m_currentApp(-1),
+		m_currentApp(),
 		m_lastAppTickTime(0),
-		m_lastAppRenderTime(0)
+		m_lastAppRenderTime(0),
+		m_systemFactory(systemFactory)
 	{
-		m_done = false;
-		m_currentApp = -1;
-		m_lastAppTickTime = 0;
-		m_lastAppRenderTime = 0;
-
-		m_systemFactory = systemFactory;
-
 		LOG_INF("Framework created");
 	}
 
@@ -31,20 +23,16 @@ namespace fbr
 		LOG_INF("Framework destroyed");
 	}
 
-	void Framework::RegisterApp(std::unique_ptr<IApp> app)
+	Framework::AppId_t Framework::RegisterApp(std::unique_ptr<IApp> app)
 	{
-		m_currentApp = (int)m_apps.size();
-		m_apps.push_back(std::move(app));
-		LOG_INF("App registered");
-	}
+		AppId_t hash = std::hash<std::unique_ptr<IApp>>()(app);
+		auto insertion = m_apps.insert(std::make_pair(hash, std::move(app)));
 
-	/*
-	void Framework::RegisterRenderer(std::unique_ptr<IRenderer> renderer)
-	{
-		m_renderer = std::move(renderer);
-		LOG_INF("Renderer registered");
+		m_currentApp = hash;
+		LOG_INF("App registered");
+
+		return m_currentApp;
 	}
-	*/
 
 	void Framework::ConnectWindowListener()
 	{
@@ -52,8 +40,9 @@ namespace fbr
 		m_window->SetListener(std::move(ptr));
 	}
 
-	void Framework::ConnectAppListener(const std::size_t & appID)
+	void Framework::ConnectAppListener(const AppId_t & appID)
 	{
+		
 		m_apps[appID]->SetListener(std::make_unique<FrameworkAppListener>(this, appID));
 	}
 
@@ -84,12 +73,11 @@ namespace fbr
 		ConnectWindowListener();
 
 		//Create renderer
-		if(m_rendererSystemFactory)
-		m_renderer = m_rendererSystemFactory->m_object->CreateRenderer(m_window.get());
+		CreateRenderer();
 
 		//Init renderer
 		if (m_renderer) {
-			m_renderer->Init();
+			m_renderer->Init(m_window.get());
 		}
 		else
 		{
@@ -112,17 +100,37 @@ namespace fbr
 		return success;
 	}
 
+	void Framework::RegisterRenderer(std::unique_ptr<IRenderer> renderer)
+	{
+		m_customRenderer = true;
+		m_renderer = std::move(renderer);
+	}
+
+	void Framework::CreateRenderer()
+	{
+		if (m_customRenderer)
+		{
+			LOG_WAR("Using custom renderer - won't create new one");
+			return;
+		}
+
+		if (m_rendererSystemFactory)
+			m_renderer = std::move(m_rendererSystemFactory->m_object->CreateRenderer(m_window.get()));
+		else
+			LOG_WAR("There is no renderer factory connected to this framework");
+	}
+
 	bool Framework::InitializeApps(const AppInitContext & appInitContext)
 	{
-		for (std::size_t appID = 0; appID < m_apps.size(); ++appID)
+		for (auto & app : m_apps)
 		{
-			if (!m_apps[appID]->OnInit(appInitContext)) {
+			if (!app.second->OnInit(appInitContext)) {
 				LOG_ERR("App init failed");
 				return false;
 			}
 			else
 			{
-				ConnectAppListener(appID);
+				ConnectAppListener(app.first);
 			}
 		}
 		return true;
@@ -158,6 +166,10 @@ namespace fbr
 
 				// render app
 				if(m_renderer)Render();
+				else
+				{
+					CreateRenderer();
+				}
 			}
 		}
 	}
@@ -166,7 +178,10 @@ namespace fbr
 	{
 		if (m_done == true)return;
 
-		m_apps[m_currentApp]->OnClose();
+		for (auto & app : m_apps)
+		{
+			app.second->OnClose();
+		}
 
 		m_done = true;
 		LOG_INF("Framework requested exit");
@@ -183,7 +198,7 @@ namespace fbr
 
 	bool Framework::CheckCurrentAppValidity()
 	{
-		if (m_currentApp < 0 || m_currentApp >= m_apps.size())
+		if (m_apps.find(m_currentApp) ==  m_apps.end())
 		{
 			RequestExit();
 			return false;
@@ -191,7 +206,6 @@ namespace fbr
 
 		return true;
 	}
-
 
 	void Framework::Render()
 	{
@@ -212,7 +226,7 @@ namespace fbr
 	void Framework::CloseCurrentApp()
 	{
 		m_apps[m_currentApp]->OnClose();
-		m_apps.erase(m_apps.begin() + m_currentApp);
+		m_apps.erase(m_currentApp);
 	}
 
 	void Framework::ChooseRenderer(fbr::RendererSystemCreator* creator)
@@ -227,6 +241,7 @@ namespace fbr
 			LOG_WAR("Window is not created ");
 		}
 
+		m_customRenderer = false;
 		m_rendererSystemFactory = creator;
 	}
 
@@ -254,8 +269,10 @@ namespace fbr
 		m_inputBuffer.push_back(inputEvent);
 	}
 
-	//TODO PLATFORM SPECIFIC MESSAGES DISPATCHER 
+	//TODO PLATFORM SPECIFIC MESSAGES DISPATCHER
+#define NOMINMAX
 #include <Windows.h>
+
 	void Framework::PumpMessages()
 	{
 		MSG msg;

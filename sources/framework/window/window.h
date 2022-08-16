@@ -1,11 +1,12 @@
 #pragma once
 #include <memory>
 
-#include "../framework-listener/framework-listener.h"
 #include "resolution.h"
 
 namespace fbr
 {
+	class FrameworkWindowListener;
+
 	class Window
 	{
 	public:

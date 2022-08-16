@@ -14,7 +14,7 @@ namespace fbr
 
 		virtual ~IRenderer() = default;
 
-		virtual bool Init() = 0;
+		virtual bool Init(fbr::Window * window) = 0;
 		virtual void Render() = 0;
 		virtual IRenderFrame * GetFrame() = 0;
 

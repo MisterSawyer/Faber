@@ -12,7 +12,9 @@ namespace fbr::opengl
 	};
 }
 
-//TODO IFDEF PLATFORM WINDOWS 
+//TODO IFDEF PLATFORM WINDOWS
+#define NOMINMAX
 #include <Windows.h>
+
 #include <winnt.h>
 DEFINE_ENUM_FLAG_OPERATORS(fbr::opengl::SurfaceMask);

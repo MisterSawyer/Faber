@@ -1,7 +1,9 @@
 #pragma once
 
 #include "../opengl-renderer-context.h"
+#define NOMINMAX
 #include <Windows.h>
+
 #include <string>
 
 namespace fbr::opengl::windows

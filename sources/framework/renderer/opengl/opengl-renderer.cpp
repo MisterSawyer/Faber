@@ -11,7 +11,7 @@ fbr::IRenderFrame* fbr::opengl::OpenGLRenderer::GetFrame()
 	return m_frame.get();
 }
 
-bool fbr::opengl::OpenGLRenderer::Init()
+bool fbr::opengl::OpenGLRenderer::Init(fbr::Window* window)
 {
 	if (m_context != nullptr && !m_context->Good())return false;
 

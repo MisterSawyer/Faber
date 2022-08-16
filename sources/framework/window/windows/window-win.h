@@ -1,8 +1,8 @@
 #pragma once
 
+#define NOMINMAX
 #include <Windows.h>
 #include "../window.h"
-
 
 namespace fbr::windows
 {

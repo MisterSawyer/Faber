@@ -1,9 +1,13 @@
 #include "framework-listener.h"
-#include "../input/input.h"
 #include "../framework.h"
 
 namespace fbr
 {
+	void IFrameworkListener::ForwardInput(InputEvent inputEvent) const
+	{
+		m_framework->BufferInput(std::move(inputEvent));
+	}
+
 	void FrameworkWindowListener::OnClose()
 	{
 		m_framework->RequestExit();
@@ -14,7 +18,7 @@ namespace fbr
 		InputEvent newEvent;
 		newEvent.type = InputEvent::Type::KEY;
 		newEvent.data.keyCode = keyCode;
-		m_framework->BufferInput(newEvent);
+		ForwardInput(std::move(newEvent));
 	}
 
 	void FrameworkWindowListener::OnMouseWheel(int delta)
@@ -22,7 +26,7 @@ namespace fbr
 		InputEvent newEvent;
 		newEvent.type = InputEvent::Type::MOUSE_WHEEL;
 		newEvent.data.delta = delta;
-		m_framework->BufferInput(newEvent);
+		ForwardInput(std::move(newEvent));
 	}
 
 	void FrameworkWindowListener::OnMouseMoved(const int x, const int y)
@@ -31,7 +35,7 @@ namespace fbr
 		newEvent.type = InputEvent::Type::MOUSE_POSITION;
 		newEvent.data.position[0] = x;
 		newEvent.data.position[1] = y;
-		m_framework->BufferInput(newEvent);
+		ForwardInput(std::move(newEvent));
 	}
 
 	void FrameworkWindowListener::OnMouseButtonClicked(const int buttonCode)
@@ -39,7 +43,7 @@ namespace fbr
 		InputEvent newEvent;
 		newEvent.type = InputEvent::Type::MOUSE_CLICK;
 		newEvent.data.keyCode = buttonCode;
-		m_framework->BufferInput(newEvent);
+		ForwardInput(std::move(newEvent));
 	}
 
 	// ---------------

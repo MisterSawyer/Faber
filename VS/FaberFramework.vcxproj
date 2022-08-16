@@ -44,6 +44,10 @@
     <ClCompile Include="..\sources\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\linux\sfml-context-lin.h" />
+    <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\sfml-context.h" />
+    <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\sfml-renderer.h" />
+    <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\windows\sfml-context-win.h" />
     <ClInclude Include="..\sources\app\app-init-context.h" />
     <ClInclude Include="..\sources\app\app.h" />
     <ClInclude Include="..\sources\engine\actor\actor.h" />
@@ -139,11 +143,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\libs\glm;..\libs\boost_1_79_0;..\libs\glew-2.1.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\libs\glm;..\libs\boost_1_79_0;..\libs\glew-2.1.0\include;..\libs\SFML-2.5.1\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\libs\glm;..\libs\boost_1_79_0;..\libs\glew-2.1.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\libs\glm;..\libs\boost_1_79_0;..\libs\glew-2.1.0\include;..\libs\SFML-2.5.1\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -184,8 +188,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;..\libs\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -204,7 +208,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\libs\boost_1_79_0\stage\lib;..\libs\glew-2.1.0\lib\Release\x64;..\libs\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

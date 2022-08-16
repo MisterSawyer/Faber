@@ -9,11 +9,6 @@
 
 namespace fbr::opengl
 {
-	struct OpenGLRendererFactory;
-
-	template<class T>
-	concept IsOpenGLRendererFactory = IsRendererFactory<T> && std::is_base_of<fbr::opengl::OpenGLRendererFactory, T>::value;
-
 	/*
 	* Renderer is a combination of Context and Frame(data to draw) (and additional object like for e.x Shader)
 	* it has knowledge of how to use data from Frame to draw it on screen
@@ -23,7 +18,7 @@ namespace fbr::opengl
 	public:
 		OpenGLRenderer(std::unique_ptr<ContextOpenGL> context);
 
-		bool Init() override;
+		bool Init(fbr::Window* window) override;
 		void Render() override;
 		IRenderFrame* GetFrame() override;
 
@@ -55,4 +50,9 @@ namespace fbr::opengl
 			return std::make_unique<OpenGLRenderer>(std::move(upcastContext));
 		}
 	};
+
+
+	// Concept for checking if its a opengl renderer
+	template<class T>
+	concept IsOpenGLRendererFactory = IsRendererFactory<T> && std::is_base_of<fbr::opengl::OpenGLRendererFactory, T>::value;
 }
