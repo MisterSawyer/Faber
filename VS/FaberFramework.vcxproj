@@ -140,12 +140,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\libs\glm;..\libs\boost_1_79_0;..\libs\glew-2.1.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Sawyer\source\repos\FaberFramework\libs\glew-2.1.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>..\libs\glm;..\libs\boost_1_79_0;..\libs\glew-2.1.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Sawyer\source\repos\FaberFramework\libs\glew-2.1.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

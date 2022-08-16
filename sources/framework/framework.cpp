@@ -84,6 +84,7 @@ namespace fbr
 		ConnectWindowListener();
 
 		//Create renderer
+		if(m_rendererSystemFactory)
 		m_renderer = m_rendererSystemFactory->m_object->CreateRenderer(m_window.get());
 
 		//Init renderer
