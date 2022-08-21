@@ -1,6 +1,6 @@
 set( LIB_NAME opengl-shader)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	opengl-shader.cpp
     opengl-shader-stage.cpp
 )
@@ -12,14 +12,16 @@ target_compile_options( faber-${LIB_NAME} PRIVATE ${FABER_COMPILER_FLAGS} )
 target_include_directories(
     faber-${LIB_NAME}
     PUBLIC
+    ${ADDITIONAL_LIBS}/
     ${FABER_INCLUDE_DIRECTORY}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
+add_compile_definitions(GLEW_STATIC)
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
-    fbr::shader
-    fbr::logger
+   ${GLEW_LIBRARIES}
+       opengl32
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")

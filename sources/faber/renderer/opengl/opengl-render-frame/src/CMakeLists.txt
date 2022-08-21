@@ -1,6 +1,6 @@
 set( LIB_NAME opengl-render-frame)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	opengl-render-frame.cpp
 )
 
@@ -16,9 +16,11 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
+add_compile_definitions(GLEW_STATIC)
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
-    fbr::render-frame
+    ${GLEW_LIBRARIES}
+        opengl32
 )
 
 

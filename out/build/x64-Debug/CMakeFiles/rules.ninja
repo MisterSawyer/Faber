@@ -28,24 +28,6 @@ rule CUSTOM_COMMAND
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__faber-main_debug
-  deps = msvc
-  command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
-  description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX executable.
-
-rule CXX_EXECUTABLE_LINKER__faber-main_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --intdir=$OBJECT_DIR --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x64\mt.exe --manifests $MANIFESTS -- C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\link.exe /nologo $in  /out:$TARGET_FILE /implib:$TARGET_IMPLIB /pdb:$TARGET_PDB /version:0.0 $LINK_FLAGS $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
-  description = Linking CXX executable $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
-# Rule for compiling CXX files.
-
 rule CXX_COMPILER__faber-framework_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
@@ -71,30 +53,12 @@ rule CXX_COMPILER__faber-app_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-app_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-framework-app-listener_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-framework-app-listener_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -107,30 +71,12 @@ rule CXX_COMPILER__faber-framework-listener_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-framework-listener_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-input_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-input_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -143,30 +89,12 @@ rule CXX_COMPILER__faber-logger_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-logger_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-macros_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-macros_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -179,30 +107,12 @@ rule CXX_COMPILER__faber-renderer_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-renderer_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-color_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-color_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -215,30 +125,12 @@ rule CXX_COMPILER__faber-renderer-creator_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-renderer-creator_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-render-frame_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-render-frame_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -251,30 +143,12 @@ rule CXX_COMPILER__faber-dx-renderer_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-dx-renderer_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-dx-renderer-context_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-dx-renderer-context_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -287,30 +161,12 @@ rule CXX_COMPILER__faber-dx-renderer-context-win_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-dx-renderer-context-win_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-opengl-renderer_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-opengl-renderer_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -323,30 +179,12 @@ rule CXX_COMPILER__faber-opengl-renderer-context_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-opengl-renderer-context_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-opengl-renderer-context-win_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-opengl-renderer-context-win_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -359,30 +197,12 @@ rule CXX_COMPILER__faber-opengl-render-frame_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-opengl-render-frame_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-opengl-shader_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-opengl-shader_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -395,30 +215,12 @@ rule CXX_COMPILER__faber-renderer-context_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-renderer-context_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-shader_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-shader_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -431,30 +233,12 @@ rule CXX_COMPILER__faber-system_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-system_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-system-win_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-system-win_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -467,30 +251,12 @@ rule CXX_COMPILER__faber-timer_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-timer_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-window_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-window_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -503,30 +269,12 @@ rule CXX_COMPILER__faber-window-win_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-window-win_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-framework-window-listener_debug
   deps = msvc
   command = C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe  /nologo /TP $DEFINES $INCLUDES $FLAGS /showIncludes /Fo$out /Fd$TARGET_COMPILE_PDB /FS -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-framework-window-listener_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~2\MICROS~2\2019\ENTERP~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\lib.exe /nologo $LINK_FLAGS /out:$TARGET_FILE $in  && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################

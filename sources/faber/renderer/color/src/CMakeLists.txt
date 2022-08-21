@@ -1,6 +1,6 @@
 set( LIB_NAME color)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	color.cpp
 )
 
@@ -12,7 +12,8 @@ target_include_directories(
     faber-${LIB_NAME}
     PRIVATE
     ${ADDITIONAL_LIBS}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${FABER_INCLUDE_DIRECTORY}/
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
 target_link_libraries( faber-${LIB_NAME}

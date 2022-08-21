@@ -195,95 +195,8 @@ FaberFramework_BINARY_DIR:STATIC=C:/Users/Sawyer/source/repos/FaberFramework/out
 //Value Computed by CMake
 FaberFramework_SOURCE_DIR:STATIC=C:/Users/Sawyer/source/repos/FaberFramework
 
-//The directory containing a CMake configuration file for GLEW.
-GLEW_DIR:PATH=GLEW_DIR-NOTFOUND
-
-//Path to a file.
-GLEW_INCLUDE_DIR:PATH=GLEW_INCLUDE_DIR-NOTFOUND
-
-//Path to a library.
-GLEW_LIB:FILEPATH=GLEW_LIB-NOTFOUND
-
-//Path to a library.
-GLEW_SHARED_LIBRARY_DEBUG:FILEPATH=GLEW_SHARED_LIBRARY_DEBUG-NOTFOUND
-
-//Path to a library.
-GLEW_SHARED_LIBRARY_RELEASE:FILEPATH=GLEW_SHARED_LIBRARY_RELEASE-NOTFOUND
-
-//Path to a library.
-GLEW_STATIC_LIBRARY_DEBUG:FILEPATH=GLEW_STATIC_LIBRARY_DEBUG-NOTFOUND
-
-//Path to a library.
-GLEW_STATIC_LIBRARY_RELEASE:FILEPATH=GLEW_STATIC_LIBRARY_RELEASE-NOTFOUND
-
 //Dependencies for the target
-faber-app_LIB_DEPENDS:STATIC=general;fbr::framework;general;fbr::framework-app-listener;
-
-//Dependencies for the target
-faber-dx-renderer-context-win_LIB_DEPENDS:STATIC=general;d3d11;general;fbr::logger;general;fbr::dx-renderer-context;
-
-//Dependencies for the target
-faber-dx-renderer-context_LIB_DEPENDS:STATIC=general;d3d11;general;fbr::dx-renderer-context-win;
-
-//Dependencies for the target
-faber-dx-renderer_LIB_DEPENDS:STATIC=general;d3d11;general;fbr::renderer;general;fbr::dx-renderer-context;
-
-//Dependencies for the target
-faber-framework-app-listener_LIB_DEPENDS:STATIC=general;fbr::framework-listener;
-
-//Dependencies for the target
-faber-framework-listener_LIB_DEPENDS:STATIC=general;fbr::framework;
-
-//Dependencies for the target
-faber-framework-window-listener_LIB_DEPENDS:STATIC=general;fbr::framework;general;fbr::framework-listener;
-
-//Dependencies for the target
-faber-framework_LIB_DEPENDS:STATIC=general;fbr::app;general;fbr::logger;general;fbr::timer;general;fbr::window;general;fbr::framework-listener;general;fbr::framework-window-listener;general;fbr::framework-app-listener;general;fbr::system;general;fbr::system-win;general;fbr::dx-renderer-context-win;general;fbr::opengl-renderer-context-win;general;fbr::renderer;
-
-//Dependencies for the target
-faber-logger_LIB_DEPENDS:STATIC=general;fbr::macros;
-
-//Dependencies for the target
-faber-opengl-render-frame_LIB_DEPENDS:STATIC=general;fbr::render-frame;
-
-//Dependencies for the target
-faber-opengl-renderer-context-win_LIB_DEPENDS:STATIC=general;fbr::opengl-renderer-context;general;fbr::logger;
-
-//Dependencies for the target
-faber-opengl-renderer-context_LIB_DEPENDS:STATIC=general;opengl32;general;fbr::logger;general;fbr::renderer-context;general;fbr::opengl-renderer;
-
-//Dependencies for the target
-faber-opengl-renderer_LIB_DEPENDS:STATIC=general;opengl32;general;fbr::renderer;general;fbr::opengl-renderer-context;general;fbr::opengl-shader;general;fbr::opengl-render-frame;
-
-//Dependencies for the target
-faber-opengl-shader_LIB_DEPENDS:STATIC=general;fbr::shader;general;fbr::logger;
-
-//Dependencies for the target
-faber-render-frame_LIB_DEPENDS:STATIC=general;fbr::color;
-
-//Dependencies for the target
-faber-renderer-context_LIB_DEPENDS:STATIC=general;fbr::window;general;fbr::color;
-
-//Dependencies for the target
-faber-renderer-creator_LIB_DEPENDS:STATIC=general;fbr::renderer;
-
-//Dependencies for the target
-faber-renderer_LIB_DEPENDS:STATIC=general;fbr::window;general;fbr::renderer-context;general;fbr::render-frame;general;fbr::color;
-
-//Dependencies for the target
-faber-shader_LIB_DEPENDS:STATIC=general;fbr::logger;
-
-//Dependencies for the target
-faber-system-win_LIB_DEPENDS:STATIC=general;fbr::system;general;fbr::window-win;
-
-//Dependencies for the target
-faber-system_LIB_DEPENDS:STATIC=general;fbr::window;general;fbr::renderer;
-
-//Dependencies for the target
-faber-window-win_LIB_DEPENDS:STATIC=general;fbr::window;general;fbr::framework-listener;general;fbr::logger;
-
-//Dependencies for the target
-faber-window_LIB_DEPENDS:STATIC=general;fbr::framework;general;fbr::framework-app-listener;general;fbr::framework-window-listener;
+faber-framework_LIB_DEPENDS:STATIC=general;fbr::app;general;fbr::framework-app-listener;general;fbr::framework-listener;general;fbr::input;general;fbr::logger;general;fbr::macros;general;fbr::renderer;general;fbr::color;general;fbr::renderer-creator;general;fbr::dx-renderer;general;fbr::dx-renderer-context;general;fbr::dx-renderer-context-win;general;fbr::opengl-renderer;general;fbr::opengl-shader;general;fbr::opengl-render-frame;general;fbr::opengl-renderer-context;general;fbr::opengl-renderer-context-win;general;fbr::renderer-context;general;fbr::render-frame;general;fbr::shader;general;fbr::system;general;fbr::system-win;general;fbr::timer;general;fbr::window;general;fbr::framework-window-listener;general;fbr::window-win;
 
 
 ########################
@@ -408,14 +321,4 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GLEW_INCLUDE_DIR
-GLEW_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GLEW_SHARED_LIBRARY_DEBUG
-GLEW_SHARED_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GLEW_SHARED_LIBRARY_RELEASE
-GLEW_SHARED_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GLEW_STATIC_LIBRARY_DEBUG
-GLEW_STATIC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GLEW_STATIC_LIBRARY_RELEASE
-GLEW_STATIC_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 

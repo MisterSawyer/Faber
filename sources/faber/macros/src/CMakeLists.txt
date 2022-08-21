@@ -1,6 +1,6 @@
 set( LIB_NAME macros)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	macros.cpp
 )
 

@@ -1,6 +1,6 @@
 set( LIB_NAME renderer-context)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	renderer-context.cpp
 )
 
@@ -12,13 +12,12 @@ target_include_directories(
     faber-${LIB_NAME}
     PUBLIC
     ${ADDITIONAL_LIBS}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${FABER_INCLUDE_DIRECTORY}/
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
-    fbr::window
-    fbr::color
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")

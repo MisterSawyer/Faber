@@ -1,7 +1,6 @@
 set( LIB_NAME framework )
-SET(FABER_DIR )
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} STATIC 
 	framework.cpp
 )
 
@@ -16,27 +15,41 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/..
 )
 
+# TODO - ogarn¹æ jak grupowaæ ladnie te pliki OBJ
+# interface library to s³aby pomys³ trochê :/ 
+# https://stackoverflow.com/questions/49265945/cmake-append-objects-from-different-cmakelists-txt-into-one-library
+
 target_link_libraries( faber-${LIB_NAME}
 	PUBLIC
    fbr::app
+        fbr::framework-app-listener
+   fbr::framework-listener
+   fbr::input
    fbr::logger
+   fbr::macros
+   fbr::renderer
+        fbr::color
+        fbr::renderer-creator
+        fbr::dx-renderer
+            fbr::dx-renderer-context
+                fbr::dx-renderer-context-win
+        fbr::opengl-renderer
+            fbr::opengl-shader
+            fbr::opengl-render-frame
+            fbr::opengl-renderer-context
+                fbr::opengl-renderer-context-win
+        fbr::renderer-context
+        fbr::render-frame
+        fbr::shader
+   fbr::system
+        fbr::system-win
    fbr::timer
    fbr::window
-   fbr::framework-listener
-   fbr::framework-window-listener
-   fbr::framework-app-listener
-   fbr::system
-   fbr::system-win #TODO system specyfic
-
-
-   fbr::dx-renderer-context-win # TODO
-   fbr::opengl-renderer-context-win
-
-   fbr::renderer
+        fbr::framework-window-listener
+        fbr::window-win
 )
 
-#    faber-renderer
- #   faber-renderer-creator
+
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")
 message(STATUS "FABER_INCLUDE_DIRECTORY: " ${FABER_INCLUDE_DIRECTORY})

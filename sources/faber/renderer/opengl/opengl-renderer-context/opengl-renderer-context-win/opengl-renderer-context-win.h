@@ -1,6 +1,6 @@
 #pragma once
 
-#include <renderer/opengl/opengl-renderer-context/opengl-renderer-context.h>
+#include <faber/renderer/opengl/opengl-renderer-context/opengl-renderer-context.h>
 
 #define NOMINMAX
 #include <Windows.h>

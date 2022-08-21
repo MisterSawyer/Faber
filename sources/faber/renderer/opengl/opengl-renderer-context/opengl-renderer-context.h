@@ -1,7 +1,7 @@
 #pragma once
 
-#include <renderer/opengl/opengl-surface-bitfields.h>
-#include <renderer/renderer-context/renderer-context.h>
+#include <faber/renderer/opengl/opengl-surface-bitfields.h>
+#include <faber/renderer/renderer-context/renderer-context.h>
 
 namespace fbr::opengl
 {

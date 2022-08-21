@@ -1,4 +1,4 @@
-#include "faber/faber.h"
+#include <faber/framework.h>
 #include <faber/app/app.h>
 #include <system/system-win/windows-objects-factory.h>
 #include <unordered_set>

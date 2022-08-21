@@ -22,25 +22,6 @@ rule CUSTOM_COMMAND
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__faber-main_debug
-  depfile = $DEP_FILE
-  deps = gcc
-  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
-  description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX executable.
-
-rule CXX_EXECUTABLE_LINKER__faber-main_debug
-  command = cmd.exe /C "$PRE_LINK && C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE -fuse-ld=lld-link -nostartfiles -nostdlib $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Xlinker /MANIFEST:EMBED -Xlinker /implib:$TARGET_IMPLIB -Xlinker /pdb:$TARGET_PDB -Xlinker /version:0.0  $LINK_PATH $LINK_LIBRARIES $MANIFESTS && $POST_BUILD"
-  description = Linking CXX executable $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
-# Rule for compiling CXX files.
-
 rule CXX_COMPILER__faber-framework_debug
   depfile = $DEP_FILE
   deps = gcc
@@ -60,7 +41,7 @@ rule CXX_STATIC_LIBRARY_LINKER__faber-framework_debug
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__faber-framework-listener_debug
+rule CXX_COMPILER__faber-app_debug
   depfile = $DEP_FILE
   deps = gcc
   command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -68,12 +49,23 @@ rule CXX_COMPILER__faber-framework-listener_debug
 
 
 #############################################
-# Rule for linking CXX static library.
+# Rule for compiling CXX files.
 
-rule CXX_STATIC_LIBRARY_LINKER__faber-framework-listener_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
+rule CXX_COMPILER__faber-framework-app-listener_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-framework-listener_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
 
 
 #############################################
@@ -87,15 +79,6 @@ rule CXX_COMPILER__faber-input_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-input_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-logger_debug
@@ -103,15 +86,6 @@ rule CXX_COMPILER__faber-logger_debug
   deps = gcc
   command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-logger_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################
@@ -125,15 +99,6 @@ rule CXX_COMPILER__faber-macros_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-macros_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-renderer_debug
@@ -144,12 +109,133 @@ rule CXX_COMPILER__faber-renderer_debug
 
 
 #############################################
-# Rule for linking CXX static library.
+# Rule for compiling CXX files.
 
-rule CXX_STATIC_LIBRARY_LINKER__faber-renderer_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
+rule CXX_COMPILER__faber-color_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-renderer-creator_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-render-frame_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-dx-renderer_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-dx-renderer-context_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-dx-renderer-context-win_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-opengl-renderer_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-opengl-renderer-context_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-opengl-renderer-context-win_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-opengl-render-frame_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-opengl-shader_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-renderer-context_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for compiling CXX files.
+
+rule CXX_COMPILER__faber-shader_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
 
 
 #############################################
@@ -163,12 +249,13 @@ rule CXX_COMPILER__faber-system_debug
 
 
 #############################################
-# Rule for linking CXX static library.
+# Rule for compiling CXX files.
 
-rule CXX_STATIC_LIBRARY_LINKER__faber-system_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
+rule CXX_COMPILER__faber-system-win_debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
 
 
 #############################################
@@ -182,15 +269,6 @@ rule CXX_COMPILER__faber-timer_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-timer_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
 rule CXX_COMPILER__faber-window_debug
@@ -201,18 +279,9 @@ rule CXX_COMPILER__faber-window_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-window_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__faber-app_debug
+rule CXX_COMPILER__faber-window-win_debug
   depfile = $DEP_FILE
   deps = gcc
   command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -220,31 +289,13 @@ rule CXX_COMPILER__faber-app_debug
 
 
 #############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-app_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__faber-engine_debug
+rule CXX_COMPILER__faber-framework-window-listener_debug
   depfile = $DEP_FILE
   deps = gcc
   command = C:\PROGRA~1\LLVM\bin\CLANG_~1.EXE $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__faber-engine_debug
-  command = cmd.exe /C "$PRE_LINK && "C:\Program Files\CMake\bin\cmake.exe" -E rm -f $TARGET_FILE && C:\PROGRA~1\LLVM\bin\llvm-ar.exe qc $TARGET_FILE $LINK_FLAGS $in && C:\PROGRA~1\LLVM\bin\LLVM-R~1.EXE $TARGET_FILE && $POST_BUILD"
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
 
 
 #############################################

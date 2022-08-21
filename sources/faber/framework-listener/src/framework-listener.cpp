@@ -1,5 +1,5 @@
-#include <faber/faber.h>
-#include <faber/framework-listener/framework-listener.h>
+#include <faber/framework.h>
+#include <framework-listener/framework-listener.h>
 
 namespace fbr
 {

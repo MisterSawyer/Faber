@@ -1,6 +1,6 @@
 #pragma once
 
-#include <faber/faber.h>
+#include <faber/framework.h>
 #include <faber/framework-listener/framework-listener.h>
 
 namespace fbr {

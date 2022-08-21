@@ -1,6 +1,6 @@
 set( LIB_NAME render-frame)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	render-frame.cpp
 )
 
@@ -18,7 +18,6 @@ target_include_directories(
 
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
-    fbr::color
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")

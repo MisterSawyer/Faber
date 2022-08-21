@@ -2,7 +2,7 @@ set( LIB_NAME window)
 
 
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	window.cpp
 )
 
@@ -13,16 +13,18 @@ target_compile_options( faber-${LIB_NAME} PRIVATE ${FABER_COMPILER_FLAGS} )
 target_include_directories(
     faber-${LIB_NAME}
     PUBLIC
+    ${ADDITIONAL_LIBS}/
     ${FABER_INCLUDE_DIRECTORY}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
 #TODO windows / linux
 target_link_libraries( faber-${LIB_NAME}
     PRIVATE
-    fbr::framework
-    fbr::framework-app-listener
     fbr::framework-window-listener
+
+    #TODO wybieranie flagami
+    fbr::window-win
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")

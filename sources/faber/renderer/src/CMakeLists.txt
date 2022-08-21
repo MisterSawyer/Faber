@@ -1,6 +1,6 @@
 set( LIB_NAME renderer)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	renderer.cpp
 )
 
@@ -11,17 +11,23 @@ target_compile_options( faber-${LIB_NAME} PRIVATE ${FABER_COMPILER_FLAGS} )
 target_include_directories(
     faber-${LIB_NAME}
     PUBLIC
-    ${FABER_INCLUDE_DIRECTORY}/
     ${ADDITIONAL_LIBS}/
+    ${FABER_INCLUDE_DIRECTORY}/
     ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
-    fbr::window
+    fbr::color
+    fbr::renderer-creator
+
+    #TODO dynamic compilation choose
+    fbr::dx-renderer
+    fbr::opengl-renderer
+
     fbr::renderer-context
     fbr::render-frame
-    fbr::color
+    fbr::shader
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")

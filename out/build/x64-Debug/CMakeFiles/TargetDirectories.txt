@@ -1,6 +1,5 @@
 C:/Users/Sawyer/source/repos/FaberFramework/out/build/x64-Debug/CMakeFiles/edit_cache.dir
 C:/Users/Sawyer/source/repos/FaberFramework/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Sawyer/source/repos/FaberFramework/out/build/x64-Debug/sources/CMakeFiles/faber-main.dir
 C:/Users/Sawyer/source/repos/FaberFramework/out/build/x64-Debug/sources/CMakeFiles/edit_cache.dir
 C:/Users/Sawyer/source/repos/FaberFramework/out/build/x64-Debug/sources/CMakeFiles/rebuild_cache.dir
 C:/Users/Sawyer/source/repos/FaberFramework/out/build/x64-Debug/sources/faber/CMakeFiles/edit_cache.dir

@@ -1,4 +1,4 @@
-#include <faber/faber.h>
+#include <faber/framework.h>
 #include <faber/app/app.h>
 
 #include <faber/logger/logger.h>

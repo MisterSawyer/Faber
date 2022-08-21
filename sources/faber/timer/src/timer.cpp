@@ -1,5 +1,5 @@
-#include "timer.h"
 #include <windows.h>
+#include <faber/timer/timer.h>
 
 namespace fbr
 {

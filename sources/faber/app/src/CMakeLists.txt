@@ -1,5 +1,5 @@
 set( LIB_NAME app)
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	app.cpp
 )
 
@@ -11,14 +11,14 @@ target_compile_options( faber-${LIB_NAME} PRIVATE ${FABER_COMPILER_FLAGS} )
 target_include_directories(
     faber-${LIB_NAME}
     PRIVATE
+    ${ADDITIONAL_LIBS}/
     ${FABER_INCLUDE_DIRECTORY}/
     ${CMAKE_CURRENT_SOURCE_DIR}/..
 )
 
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
-    fbr::framework
-    fbr::framework-app-listener
+   fbr::framework-app-listener
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")

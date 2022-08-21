@@ -1,6 +1,6 @@
 set( LIB_NAME shader)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	shader.cpp
     shader-stage.cpp
 )
@@ -14,12 +14,11 @@ target_include_directories(
     PUBLIC
     ${ADDITIONAL_LIBS}/
     ${FABER_INCLUDE_DIRECTORY}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
-    fbr::logger
 )
 
 

@@ -1,6 +1,6 @@
 set( LIB_NAME framework-window-listener)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	framework-window-listener.cpp
 )
 
@@ -12,14 +12,13 @@ target_compile_options( faber-${LIB_NAME} PRIVATE ${FABER_COMPILER_FLAGS} )
 target_include_directories(
     faber-${LIB_NAME}
     PUBLIC
+    ${ADDITIONAL_LIBS}/
     ${FABER_INCLUDE_DIRECTORY}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
 target_link_libraries( faber-${LIB_NAME}
     PRIVATE
-    fbr::framework
-    fbr::framework-listener
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")

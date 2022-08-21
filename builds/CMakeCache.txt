@@ -227,25 +227,7 @@ FaberFramework_IS_TOP_LEVEL:STATIC=ON
 FaberFramework_SOURCE_DIR:STATIC=C:/Users/Sawyer/source/repos/FaberFramework
 
 //Dependencies for the target
-faber-app_LIB_DEPENDS:STATIC=general;faber-framework;
-
-//Dependencies for the target
-faber-engine_LIB_DEPENDS:STATIC=general;faber-app;
-
-//Dependencies for the target
-faber-framework-listener_LIB_DEPENDS:STATIC=general;faber-framework;
-
-//Dependencies for the target
-faber-framework_LIB_DEPENDS:STATIC=general;faber-logger;general;faber-renderer;general;faber-renderer-creator;general;faber-input;general;faber-app;
-
-//Dependencies for the target
-faber-renderer_LIB_DEPENDS:STATIC=general;faber-renderer-context;general;faber-renderer-render-frame;general;faber-color;
-
-//Dependencies for the target
-faber-system_LIB_DEPENDS:STATIC=general;faber-window;general;faber-renderer;
-
-//Dependencies for the target
-faber-window_LIB_DEPENDS:STATIC=general;faber-window-win;general;faber-framework-listener;
+faber-framework_LIB_DEPENDS:STATIC=general;fbr::app;general;fbr::framework-listener;general;fbr::input;general;fbr::logger;general;fbr::macros;general;fbr::renderer;general;fbr::system;general;fbr::timer;general;fbr::window;
 
 
 ########################
@@ -336,7 +318,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=24
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=56
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

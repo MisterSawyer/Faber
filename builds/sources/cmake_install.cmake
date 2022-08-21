@@ -39,9 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Sawyer/source/repos/FaberFramework/builds/sources/framework/cmake_install.cmake")
-  include("C:/Users/Sawyer/source/repos/FaberFramework/builds/sources/app/cmake_install.cmake")
-  include("C:/Users/Sawyer/source/repos/FaberFramework/builds/sources/engine/cmake_install.cmake")
+  include("C:/Users/Sawyer/source/repos/FaberFramework/builds/sources/faber/cmake_install.cmake")
 
 endif()
 

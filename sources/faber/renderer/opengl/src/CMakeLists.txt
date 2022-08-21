@@ -1,6 +1,6 @@
 set( LIB_NAME opengl-renderer)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	opengl-renderer.cpp
 )
 
@@ -11,19 +11,20 @@ target_compile_options( faber-${LIB_NAME} PRIVATE ${FABER_COMPILER_FLAGS} )
 target_include_directories(
     faber-${LIB_NAME}
     PUBLIC
+    ${ADDITIONAL_LIBS}/
     ${FABER_INCLUDE_DIRECTORY}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
-
+add_compile_definitions(GLEW_STATIC)
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
     ${GLEW_LIBRARIES}
-    opengl32
-    fbr::renderer
-    fbr::opengl-renderer-context
+        opengl32
+
     fbr::opengl-shader
     fbr::opengl-render-frame
+    fbr::opengl-renderer-context
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")

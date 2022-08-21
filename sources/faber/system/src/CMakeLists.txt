@@ -1,6 +1,6 @@
 set( LIB_NAME system)
 
-add_library( faber-${LIB_NAME} STATIC
+add_library( faber-${LIB_NAME} OBJECT
 	system-factory.cpp
 )
 
@@ -11,15 +11,15 @@ target_compile_options( faber-${LIB_NAME} PRIVATE ${FABER_COMPILER_FLAGS} )
 target_include_directories(
     faber-${LIB_NAME}
     PUBLIC
+    ${ADDITIONAL_LIBS}/
     ${FABER_INCLUDE_DIRECTORY}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_SOURCE_DIR}/../..
 )
 
-#TODO windows / linux
 target_link_libraries( faber-${LIB_NAME}
     PUBLIC
-    fbr::window
-    fbr::renderer
+    #TODO wybieranie flagami windows / linux
+    fbr::system-win
 )
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")
