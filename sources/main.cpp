@@ -1,18 +1,13 @@
-#include "framework/framework.h"
-#include "app/app.h"
-#include "framework/system/windows/windows-objects-factory.h"
+#include "faber/faber.h"
+#include <faber/app/app.h>
+#include <system/system-win/windows-objects-factory.h>
 #include <unordered_set>
 #include <math.h>
-#include <glm/gtc/constants.hpp>
+#include <glm/glm/gtc/constants.hpp>
 
 
 //TODO
-#include "framework/framework-listener/framework-listener.h"
 
-
-// ---------------------------
-#include "../examples/SFML_RENDERER_EXAMPLE/sfml-renderer.h"
-//------------------------------
 
 
 fbr::RendererSystemCreator* rendererCreatorOGL_ptr;
@@ -26,7 +21,8 @@ struct AppMock : public fbr::IApp
 
 	bool OnInit(fbr::AppInitContext appInitContext) override
 	{
-		shape.setRadius(10);
+		R = 0;
+		B = 0;
 		return true;
 	}
 
@@ -43,9 +39,9 @@ struct AppMock : public fbr::IApp
 	void OnInput(const fbr::InputEvent inputEvent) override
 	{
 		if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == VK_ESCAPE)RequestExit();
-		if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == 'D')
-			GetListener()->SwitchR(rendererCreatorDX_ptr);
-		if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == 'A')GetListener()->SwitchR(rendererCreatorOGL_ptr);
+		//if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == 'D')
+		//	GetListener()->SwitchR(rendererCreatorDX_ptr);
+		//if (inputEvent.type == fbr::InputEvent::Type::KEY && inputEvent.data.keyCode == 'A')GetListener()->SwitchR(rendererCreatorOGL_ptr);
 
 	}
 
@@ -75,85 +71,38 @@ struct AppMock : public fbr::IApp
 private:
 	float R, B;
 	float angle = 0;
-	sf::CircleShape shape;
 };
 
-
-//-------------------------- 
-// Taki profesjonalny renderer jest w examples/SFML_RENDERER_EXAMPLE
-// Mozna jednak zrobic taki renderer na "szybko" bez dynamicznego wykrywania systemu
-
-class SFMLRendererFAST : public fbr::IRenderer
-{
-public:
-	bool Init(fbr::Window* window)
-	{
-		// to jest "na szybko" wiec zak³adamy ¿e system to windows np:
-		auto windowWin = dynamic_cast<fbr::windows::WindowWin*>(window);
-
-		
-		//https://www.sfml-dev.org/tutorials/1.6/graphics-win32.php
-		m_window = std::make_unique<sf::RenderWindow>(windowWin->CreateViewBuffer());
-
-		return m_window != nullptr;
-	}
-
-	void Render()
-	{
-		m_window->clear();
-
-		for (const auto& obj : m_frame.m_objects)
-		{
-			m_window->draw(*obj);
-		}
-
-		m_window->display();
-	}
-
-	fbr::IRenderFrame* GetFrame() 
-	{
-		return &m_frame;
-	}
-private:
-	SFMLFrame m_frame;
-	std::unique_ptr<sf::RenderWindow> m_window;
-};
 
 int __stdcall WinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE previnstance, _In_ LPSTR cmdline, _In_ int cmdshow)
 {
-	{
-		fbr::windows::WindowsSystemObjectsFactory systemFactory(instance);
-		//systemFactory.CreateConsole();
+	
+	auto systemFactory = std::make_unique<fbr::windows::WindowsSystemObjectsFactory>(instance);
 
-		// Used when choosing predefined renderers with dynamic system detection
-		// with custom context depending on the operating sytstem
-		// 
-		fbr::RendererSystemCreator rendererCreatorOGL(systemFactory.GetRendererContextCreator(), fbr::opengl::OpenGLRendererFactory());
-		fbr::RendererSystemCreator rendererCreatorDX(systemFactory.GetRendererContextCreator(), fbr::dx::DX11RendererFactory());
+	if(systemFactory != nullptr)
+		systemFactory->CreateConsole();
 
-		rendererCreatorOGL_ptr = &rendererCreatorOGL;
-		rendererCreatorDX_ptr = &rendererCreatorDX;
+	// Used when choosing predefined renderers with dynamic system detection
+	// with custom context depending on the operating sytstem
+	// 
+	fbr::RendererSystemCreator rendererCreatorOGL(systemFactory->GetRendererContextCreator(), fbr::opengl::OpenGLRendererFactory());
+	fbr::RendererSystemCreator rendererCreatorDX(systemFactory->GetRendererContextCreator(), fbr::dx::DX11RendererFactory());
 
-		fbr::Framework framework(&systemFactory);
+	//rendererCreatorOGL_ptr = &rendererCreatorOGL;
+	//rendererCreatorDX_ptr = &rendererCreatorDX;
 
-		framework.ChooseRenderer(&rendererCreatorOGL);
+	fbr::Framework framework(systemFactory.get());
 
-		//framework.RegisterRenderer(std::make_unique<SFMLRendererFAST>());
+	framework.ChooseRenderer(&rendererCreatorOGL);
 
-		framework.RegisterApp(std::make_unique<AppMock>());
+	framework.RegisterApp(std::make_unique<AppMock>());
 
-		if (!framework.Init())
-			return -1;
+	if (!framework.Init())
+		return -1;
 
-		framework.Loop();
+	framework.Loop();
 
-		systemFactory.DestroyConsole();
-	}
-
-	while (true)
-	{
-
-	}
+	systemFactory->DestroyConsole();
 
 	return 0;
 }

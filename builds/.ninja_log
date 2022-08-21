@@ -1,0 +1,21 @@
+# ninja log v5
+5	38	6826152175953096	sources/framework/input/src/CMakeFiles/faber-input.dir/input.cpp.obj	702583dde9808d85
+8	1236	6826152187994944	sources/framework/renderer/src/CMakeFiles/faber-renderer.dir/renderer.cpp.obj	1f0aaf577e43bdc1
+3156	3187	6826152207517705	sources/framework/logger/src/faber-logger.lib	8b70e1a8c113677c
+39	147	6826152176734170	sources/framework/input/src/faber-input.lib	94261234c75a23c2
+10	1107	6826152186588715	sources/app/src/CMakeFiles/faber-app.dir/app.cpp.obj	a025463577856ceb
+7	3155	6826152207049071	sources/framework/logger/src/CMakeFiles/faber-logger.dir/logger.cpp.obj	7c54eb0b0fc57c13
+1236	1267	6826152188307064	sources/framework/renderer/src/faber-renderer.lib	e88f150342d690e0
+3	3166	6826152207049071	sources/framework/src/CMakeFiles/faber-framework.dir/framework.cpp.obj	245ce2f3335c61d2
+3187	3215	6826152207815856	sources/app/src/faber-app.lib	d6a76f57cb1d1058
+3215	3243	6826152207972093	sources/framework/src/faber-framework.lib	2fe2b2fce90d86db
+13	41	6826160243386283	sources/framework/input/src/CMakeFiles/faber-input.dir/input.cpp.obj	702583dde9808d85
+42	75	6826160243698707	sources/framework/input/src/faber-input.lib	94261234c75a23c2
+17	848	6826160251353168	sources/framework/renderer/src/CMakeFiles/faber-renderer.dir/renderer.cpp.obj	1f0aaf577e43bdc1
+848	878	6826160251665584	sources/framework/renderer/src/faber-renderer.lib	e88f150342d690e0
+18	994	6826160252759078	sources/app/src/CMakeFiles/faber-app.dir/app.cpp.obj	a025463577856ceb
+15	2638	6826160269161762	sources/framework/logger/src/CMakeFiles/faber-logger.dir/logger.cpp.obj	7c54eb0b0fc57c13
+2639	2669	6826160269630114	sources/framework/logger/src/faber-logger.lib	8b70e1a8c113677c
+2669	2698	6826160269942536	sources/app/src/faber-app.lib	d6a76f57cb1d1058
+11	2958	6826160272285994	sources/framework/src/CMakeFiles/faber-framework.dir/framework.cpp.obj	245ce2f3335c61d2
+2958	2989	6826160272754672	sources/framework/src/faber-framework.lib	2fe2b2fce90d86db

@@ -91,14 +91,17 @@
     <Filter Include="framework\renderer\dx\dx-renderer-context\windows">
       <UniqueIdentifier>{5fd2f85c-4a28-46b4-972c-5d75998ee537}</UniqueIdentifier>
     </Filter>
+    <Filter Include="framework\renderer\frame">
+      <UniqueIdentifier>{feb49e99-ee7b-4a4c-ad97-980d43d3cae1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\renderer\creator">
+      <UniqueIdentifier>{9708dd8d-a1f1-4619-9e2e-251e5555e5a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\sources\main.cpp" />
     <ClCompile Include="..\sources\framework\framework.cpp">
       <Filter>framework</Filter>
-    </ClCompile>
-    <ClCompile Include="..\sources\framework\logger\logger.cpp">
-      <Filter>framework\logger</Filter>
     </ClCompile>
     <ClCompile Include="..\sources\framework\timer\timer.cpp">
       <Filter>framework\timer</Filter>
@@ -111,9 +114,6 @@
     </ClCompile>
     <ClCompile Include="..\sources\engine\actor\actor.cpp">
       <Filter>engine\actor</Filter>
-    </ClCompile>
-    <ClCompile Include="..\sources\framework\framework-listener\framework-listener.cpp">
-      <Filter>framework\framework-listener</Filter>
     </ClCompile>
     <ClCompile Include="..\sources\framework\window\windows\window-win.cpp">
       <Filter>framework\window\windows</Filter>
@@ -129,12 +129,6 @@
     </ClCompile>
     <ClCompile Include="..\sources\engine\engine-object\engine-object.cpp">
       <Filter>engine\engine-object</Filter>
-    </ClCompile>
-    <ClCompile Include="..\sources\framework\macros\macros.cpp">
-      <Filter>framework\macros</Filter>
-    </ClCompile>
-    <ClCompile Include="..\sources\framework\input\input.cpp">
-      <Filter>framework\input</Filter>
     </ClCompile>
     <ClCompile Include="..\sources\framework\renderer\opengl\opengl-renderer.cpp">
       <Filter>framework\renderer\opengl</Filter>
@@ -163,8 +157,20 @@
     <ClCompile Include="..\sources\framework\renderer\color\color.cpp">
       <Filter>framework\renderer\color</Filter>
     </ClCompile>
-    <ClCompile Include="..\sources\framework\renderer\render-frame.cpp">
-      <Filter>framework\renderer</Filter>
+    <ClCompile Include="..\sources\framework\renderer\frame\render-frame.cpp">
+      <Filter>framework\renderer\frame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\logger\src\logger.cpp">
+      <Filter>framework\logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\macros\src\macros.cpp">
+      <Filter>framework\macros</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\input\src\input.cpp">
+      <Filter>framework\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sources\framework\framework-listener\src\framework-listener.cpp">
+      <Filter>framework\framework-listener</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -177,16 +183,10 @@
     <ClInclude Include="..\sources\framework\timer\timer.h">
       <Filter>framework\timer</Filter>
     </ClInclude>
-    <ClInclude Include="..\sources\framework\logger\logger.h">
-      <Filter>framework\logger</Filter>
-    </ClInclude>
     <ClInclude Include="..\sources\framework\window\window.h">
       <Filter>framework\window</Filter>
     </ClInclude>
     <ClInclude Include="..\sources\framework\renderer\renderer.h">
-      <Filter>framework\renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sources\framework\renderer\render-frame.h">
       <Filter>framework\renderer</Filter>
     </ClInclude>
     <ClInclude Include="..\sources\app\app-init-context.h">
@@ -212,18 +212,6 @@
     </ClInclude>
     <ClInclude Include="..\sources\framework\framework-listener\framework-listener.h">
       <Filter>framework\framework-listener</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sources\framework\macros\concat.h">
-      <Filter>framework\macros</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sources\framework\macros\count-params.h">
-      <Filter>framework\macros</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sources\framework\macros\expand.h">
-      <Filter>framework\macros</Filter>
-    </ClInclude>
-    <ClInclude Include="..\sources\framework\macros\streamize.h">
-      <Filter>framework\macros</Filter>
     </ClInclude>
     <ClInclude Include="..\sources\framework\window\windows\window-win.h">
       <Filter>framework\window\windows</Filter>
@@ -267,9 +255,6 @@
     <ClInclude Include="..\sources\framework\renderer\opengl\opengl-frame\opengl-frame.h">
       <Filter>framework\renderer\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="..\sources\framework\renderer\renderer-creator.h">
-      <Filter>framework\renderer</Filter>
-    </ClInclude>
     <ClInclude Include="..\examples\SFML_RENDERER_EXAMPLE\sfml-context.h">
       <Filter>examples</Filter>
     </ClInclude>
@@ -290,6 +275,27 @@
     </ClInclude>
     <ClInclude Include="..\sources\framework\renderer\dx\dx-context\windows\dx-rednerer-context-windows.h">
       <Filter>framework\renderer\dx\dx-renderer-context\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\renderer\frame\render-frame.h">
+      <Filter>framework\renderer\frame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\renderer\creator\renderer-creator.h">
+      <Filter>framework\renderer\creator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\logger\include\logger\logger.h">
+      <Filter>framework\logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\macros\include\macros\concat.h">
+      <Filter>framework\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\macros\include\macros\count-params.h">
+      <Filter>framework\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\macros\include\macros\expand.h">
+      <Filter>framework\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sources\framework\macros\include\macros\streamize.h">
+      <Filter>framework\macros</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

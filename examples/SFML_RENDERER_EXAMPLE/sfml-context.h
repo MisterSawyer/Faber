@@ -1,7 +1,6 @@
 #pragma once
 #include "../../sources/framework/renderer/renderer-context/renderer-context.h"
-
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML-2.5.1/include/SFML/Graphics/RenderWindow.hpp>
 
 // ========================================================================================================================================
 //jako ¿e SFML nie potrzebuje kontekstu który bedzie sie zmienia³ w zaleznosci czy Windows / Linux to nie musimy pisac tego wszystkiego
@@ -31,12 +30,12 @@ struct ContextSFML : public fbr::IRendererContext
 	void SetStencilClearValue(int stencil) {};
 
 	void Clear() {};
+	void Destroy() {};
 
 	//--------
 	std::unique_ptr<sf::RenderWindow> m_window;
 protected:
 	bool Create() { return true; };
-	void Destroy() {};
 
 	void SetAsRenderTarget() {};
 	void SwapBuffer() {};

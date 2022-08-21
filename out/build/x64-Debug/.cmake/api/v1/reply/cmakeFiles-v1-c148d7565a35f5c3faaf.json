@@ -1,0 +1,269 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/Platform/Windows.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/Platform/WindowsPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/Compiler/MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/Platform/Windows-MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CMakeRCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeRCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.20/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "cmake/Config.cmake"
+		},
+		{
+			"path" : "sources/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/app/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/app/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/app/framework-app-listener/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/app/framework-app-listener/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/framework-listener/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/framework-listener/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/input/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/input/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/logger/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/logger/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/macros/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/macros/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/color/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/color/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/creator/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/creator/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/render-frame/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/render-frame/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/dx/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/dx/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/dx/dx-renderer-context/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/dx/dx-renderer-context/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/dx/dx-renderer-context/dx-renderer-context-win/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/dx/dx-renderer-context/dx-renderer-context-win/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/opengl-renderer-context/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/opengl-renderer-context/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/opengl-renderer-context/opengl-renderer-context-win/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/opengl-renderer-context/opengl-renderer-context-win/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/opengl-render-frame/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/opengl-render-frame/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/opengl-shader/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/opengl/opengl-shader/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/renderer-context/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/renderer-context/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/shader/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/renderer/shader/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/system/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/system/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/system/system-win/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/system/system-win/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/timer/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/timer/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/window/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/window/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/window/window-win/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/window/window-win/src/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/window/framework-window-listener/CMakeLists.txt"
+		},
+		{
+			"path" : "sources/faber/window/framework-window-listener/src/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "C:/Users/Sawyer/source/repos/FaberFramework/out/build/x64-Debug",
+		"source" : "C:/Users/Sawyer/source/repos/FaberFramework"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

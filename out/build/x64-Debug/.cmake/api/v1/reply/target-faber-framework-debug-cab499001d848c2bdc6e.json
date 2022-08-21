@@ -1,0 +1,214 @@
+{
+	"archive" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64",
+				"role" : "flags"
+			}
+		]
+	},
+	"artifacts" : 
+	[
+		{
+			"path" : "sources/faber/src/faber-framework.lib"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"add_compile_definitions",
+			"target_include_directories",
+			"target_link_libraries"
+		],
+		"files" : 
+		[
+			"sources/faber/src/CMakeLists.txt",
+			"sources/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 4,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 1,
+				"parent" : 2
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 11,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 19,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc -std=c++20 /MDd /Zi /Ob0 /Od /RTC1"
+				},
+				{
+					"fragment" : "-std:c++latest"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "GLEW_STATIC"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/libs"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/.."
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/timer/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/window/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/window/framework-window-listener/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/system/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/src/../.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/renderer-context/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/system/system-win/src/../.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/window/window-win/src/../.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/dx/dx-renderer-context/dx-renderer-context-win/src/../.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/dx/dx-renderer-context/src/../.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/opengl/opengl-renderer-context/opengl-renderer-context-win/src/../.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/opengl/opengl-renderer-context/src/../.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/opengl/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/opengl/opengl-shader/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/shader/src/.."
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/Sawyer/source/repos/FaberFramework/sources/faber/renderer/opengl/opengl-render-frame/src/../.."
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "faber-app::@cbba3fe5da77d729fd15"
+		}
+	],
+	"id" : "faber-framework::@4e4fb176f682d27c6e95",
+	"name" : "faber-framework",
+	"nameOnDisk" : "faber-framework.lib",
+	"paths" : 
+	{
+		"build" : "sources/faber/src",
+		"source" : "sources/faber/src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "sources/faber/src/framework.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

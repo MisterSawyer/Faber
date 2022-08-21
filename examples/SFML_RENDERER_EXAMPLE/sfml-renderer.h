@@ -1,10 +1,10 @@
 #pragma once
 #include <unordered_set>
-#include "../../sources/framework/renderer/render-frame.h"
+#include "../../sources/framework/renderer/frame/render-frame.h"
 #include "../../sources/framework/renderer/renderer.h"
 #include "sfml-context.h"
 
-#include <SFML/Graphics.hpp>
+#include <SFML-2.5.1/include/SFML/Graphics.hpp>
 
 // klatka renderera
 struct SFMLFrame : fbr::IRenderFrame
@@ -32,6 +32,11 @@ struct RendererSFML : fbr::IRenderer
 		// tutaj mozemy np robic dynamiczne klatki itp itd
 
 		return true;
+	}
+
+	void Destroy()
+	{
+		m_context->Destroy();
 	}
 
 	void Render()override
