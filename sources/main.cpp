@@ -1,10 +1,9 @@
-#include <faber/framework.h>
-#include <faber/app/app.h>
-#include <system/system-win/windows-objects-factory.h>
 #include <unordered_set>
 #include <math.h>
 #include <glm/glm/gtc/constants.hpp>
 
+
+#include <faber/faber.h>
 
 //TODO
 
@@ -79,7 +78,7 @@ int __stdcall WinMain(_In_ HINSTANCE instance, _In_opt_ HINSTANCE previnstance, 
 	
 	auto systemFactory = std::make_unique<fbr::windows::WindowsSystemObjectsFactory>(instance);
 
-	if(systemFactory != nullptr)
+	if (systemFactory != nullptr)
 		systemFactory->CreateConsole();
 
 	// Used when choosing predefined renderers with dynamic system detection

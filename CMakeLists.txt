@@ -1,8 +1,6 @@
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE debug)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
-
 
 
 cmake_minimum_required (VERSION 3.5)
@@ -20,7 +18,6 @@ endif()
 
 # include the configuration file
 include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake)
-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/BundleStaticLibrary.cmake)
 
 set(ADDITIONAL_LIBS "${CMAKE_CURRENT_SOURCE_DIR}/libs")
 #TODO auto find
