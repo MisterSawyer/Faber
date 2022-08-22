@@ -2,8 +2,10 @@
 #include <framework/system/system-win/windows-objects-factory.h>
 #include <framework/logger/logger.h>
 
-fbr::windows::WindowsSystemObjectsFactory::WindowsSystemObjectsFactory(HINSTANCE executableInstance)
-	:m_systemRendererContextFactory(executableInstance)
+fbr::windows::WindowsSystemObjectsFactory::WindowsSystemObjectsFactory(HINSTANCE executableInstance, LPSTR cmdline, int cmdshow)
+	:m_systemRendererContextFactory(executableInstance),
+	m_cmdline(cmdline),
+	m_cmdshow(cmdshow)
 {
 	m_executableInstance = executableInstance;
 }

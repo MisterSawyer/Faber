@@ -90,7 +90,7 @@ namespace fbr::windows
 	{
 	public:
 
-		WindowsSystemObjectsFactory(HINSTANCE executableInstance);
+		WindowsSystemObjectsFactory(HINSTANCE executableInstance, LPSTR cmdline, int cmdshow);
 		virtual ~WindowsSystemObjectsFactory();
 
 		std::unique_ptr<Window> MakeWindow(const Resolution& resolution)const override;
@@ -108,6 +108,8 @@ namespace fbr::windows
 		fbr::windows::WindowsSystemRendererContextFactory m_systemRendererContextFactory;
 
 		HINSTANCE m_executableInstance;
+		LPSTR m_cmdline;
+		int m_cmdshow;
 	};
 
 

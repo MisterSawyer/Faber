@@ -19,8 +19,8 @@ target_include_directories(
 # interface library to s³aby pomys³ trochê :/ 
 # https://stackoverflow.com/questions/49265945/cmake-append-objects-from-different-cmakelists-txt-into-one-library
 
-target_link_libraries( faber-${LIB_NAME}
-	PUBLIC
+set(FRAMEWORK_OBJ_LIBRARIES
+
    fbr::app
         fbr::framework-app-listener
    fbr::framework-listener
@@ -39,20 +39,23 @@ target_link_libraries( faber-${LIB_NAME}
 )
 
 if(FABER_DX)
-target_link_libraries(faber-${LIB_NAME}
-	PUBLIC        
+    SET(FRAMEWORK_OBJ_LIBRARIES ${FRAMEWORK_OBJ_LIBRARIES}
     fbr::dx-renderer
-            fbr::dx-renderer-context)
+    fbr::dx-renderer-context)
 endif()
 
 if(FABER_OPENGL)
-target_link_libraries(faber-${LIB_NAME}
-	PUBLIC        
+ SET(FRAMEWORK_OBJ_LIBRARIES ${FRAMEWORK_OBJ_LIBRARIES}    
     fbr::opengl-renderer
-            fbr::opengl-shader
-            fbr::opengl-render-frame
-            fbr::opengl-renderer-context)
+    fbr::opengl-shader
+    fbr::opengl-render-frame
+    fbr::opengl-renderer-context)
 endif()
+
+target_link_libraries( faber-${LIB_NAME}
+	PUBLIC
+    ${FRAMEWORK_OBJ_LIBRARIES}
+)
 
 message(STATUS " ___ Analyzing " ${LIB_NAME} " ___ ")
 message(STATUS "FABER_FRAMEWORK_INCLUDE_DIRECTORY: " ${FABER_FRAMEWORK_INCLUDE_DIRECTORY})
@@ -61,3 +64,7 @@ message(STATUS "INCLUDE_DIR: " ${OUT})
 get_target_property(OUT faber-${LIB_NAME} LINK_LIBRARIES)
 message(STATUS "LINK_LIBRARIES: " ${OUT})
 message(STATUS)
+
+
+#add_library(libs INTERFACE)
+#target_sources(libs INTERFACE $<TARGET_OBJECTS:lib1> $<TARGET_OBJECTS:lib2>)

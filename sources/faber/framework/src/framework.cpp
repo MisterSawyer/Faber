@@ -278,6 +278,7 @@ namespace fbr
 	}
 
 	//TODO PLATFORM SPECIFIC MESSAGES DISPATCHER
+
 #define NOMINMAX
 #include <Windows.h>
 

@@ -80,4 +80,29 @@ namespace fbr
 		std::mutex			m_inputBufferLock;
 		std::vector< InputEvent >	m_inputBuffer;
 	};
+
+
+	template<std::derived_from<IApp> T>
+	int StartApplication(fbr::ISystemObjectsFactory* systemFactory, fbr::RendererSystemCreator* renderer)
+	{
+
+		if (systemFactory != nullptr)
+			systemFactory->CreateConsole();
+
+		fbr::Framework framework(systemFactory);
+
+		framework.ChooseRenderer(renderer);
+
+		framework.RegisterApp(std::make_unique<T>());
+
+		if (!framework.Init())
+			return -1;
+
+		framework.Loop();
+
+		if (systemFactory != nullptr)
+			systemFactory->DestroyConsole();
+
+		return 0;
+	}
 }
